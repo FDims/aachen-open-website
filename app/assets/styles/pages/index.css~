@@ -1,0 +1,71 @@
+.homepage {
+    .homepage-description{
+        background-color: var(--blue2);
+        display: flex;
+        flex-direction: row;
+        width: 85%;
+        margin: 5vh auto;
+        padding: 20px;
+        border-radius: 10px;
+        .homepage-description-image {
+            display: inline-flex;
+            .homepage-description-image-logo {
+                height: 300px;
+                width: 300px;
+            }
+        }
+        .homepage-description-text {
+            margin: auto 15px;
+            font-family: "helvetica world", helvetica, arial, sans-serif;
+            width: 45%;
+            h5{
+                font-size: 30px;
+                font-weight: bolder;
+                margin: 10px;
+            }
+            h3{
+                font-size: 20px;
+                font-weight: bold;
+                margin: 10px;
+            }
+            p{
+                text-align: justify;
+                margin: 10px;
+            }
+        }
+        .homepage-description-infos {
+            margin: auto 10px;
+            width: 25%;
+            .homepage-infos-date, .homepage-infos-location, .homepage-infos-instagram{
+                display: flex;
+                flex-direction: row;
+                margin: 15px 0;
+            }
+            .homepage-infos-date-icon, .homepage-infos-location-icon, .homepage-infos-instagram-icon{
+                height: 20px;
+                margin: auto 0;
+            }
+            .homepage-infos-date-text, .homepage-infos-location-text, .homepage-infos-instagram-text{
+                display: inline-flex;
+                margin: 0 10px;
+            }
+        }
+    }
+
+    .homepage-schedule-cards-wrapper {
+        width: auto;
+        .homepage-schedule-cards-title{
+            font-size: 30px;
+            font-weight: bolder;
+            margin: 0 15%;
+        }
+        .homepage-schedule-cards {
+            width: 85%  ;
+            border: 2px solid var(--cream);
+            border-radius: 10px;
+            margin: auto;
+            padding: 20px 50px;
+        }
+    }
+
+}

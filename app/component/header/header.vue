@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui/components/NavigationMenu.vue"
-import "../header/header.css"
+import "./header.scss"
 
 const route = useRoute();
 const items = computed<NavigationMenuItem[]>(() => [

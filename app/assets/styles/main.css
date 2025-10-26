@@ -13,6 +13,7 @@
 body{
     background-image: url("~/assets/images/header-background.png");
     background-color: var(--blue2);
+    font-family: "helvetica world", helvetica, arial, sans-serif;
 }
 
 footer {

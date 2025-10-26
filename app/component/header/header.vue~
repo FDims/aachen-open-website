@@ -30,9 +30,9 @@ const items = computed<NavigationMenuItem[]>(() => [
         alt="logo"
         class="header-logo"
       />
-      <h5 class="header-text">
+      <h1 class="header-text">
         Aachen Open
-      </h5>
+      </h1>
     </template>
 
     <template #right>
