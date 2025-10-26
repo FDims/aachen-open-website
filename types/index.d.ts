@@ -15,14 +15,14 @@ export interface Team {
 }
 
 export interface Schedule {
-id: string;
-sport: Sport
-time: Date;
-teamA: Team;
-teamB: Team;
-scoreA: number;
-scoreB: number;
-finished: boolean;
+    id: string;
+    sport: Sport
+    time: Date;
+    teamA: Team;
+    teamB: Team;
+    scoreA: number;
+    scoreB: number;
+    finished: boolean;
 }
 
 export interface Group {

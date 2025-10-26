@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type {Schedule, Team} from "~~/types";
 import MatchCard from "~/component/matchCard/matchCard.vue";
+import "~/assets/styles/index.css"
 
   const mockTeamA: Team = {
     id: "t01",
@@ -83,16 +84,20 @@ const mockTeamB: Team = {
 </script>
 
 <template>
-  <div class="schedule-cards">
-  <UCarousel
-    v-slot ="{item}"
-    class="schedule-carousel"
-    arrows
-    :items = "mockSchedule"
-    :ui = "{ item: `basis-1/3`}"
-    >
-    <match-card :schedule="item" class="schedule-card"/>
-  </UCarousel>
+  <div class="homepage"></div>
+  <div class="homepage-schedule-cards-wrapper">
+    <h1>Matches</h1>
+    <div class="homepage-schedule-cards">
+      <UCarousel
+        v-slot ="{item}"
+        class="homepage-schedule-carousel"
+        arrows
+        :items = "mockSchedule"
+        :ui = "{ item: `basis-1/3`}"
+        >
+        <match-card :schedule="item" class="homepage-schedule-card"/>
+      </UCarousel>
+    </div>
   </div>
 </template>
 
