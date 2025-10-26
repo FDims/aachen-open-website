@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+:root {
+    --red1: #ED3F27;
+    --red2: #FF5139;
+    --blue1: #134686;
+    --blue2: #002451;
+    --yellow: #FEB21A;
+    --cream: #FDF4E3;
+}
+
+body{
+    background-image: url("~/assets/images/header-background.png");
+    background-color: var(--blue2);
+}
+
+footer {
+    position: absolute;
+    bottom: 1vh;
+}

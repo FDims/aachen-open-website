@@ -1,0 +1,48 @@
+<script setup lang="ts">
+import type { NavigationMenuItem } from "@nuxt/ui/components/NavigationMenu.vue";
+
+const route = useRoute();
+const items = computed<NavigationMenuItem[]>(() => [
+  {
+    label: "Home",
+    to: `/`,
+    active: route.path.endsWith("/"),
+  },
+  {
+    label: "Schedule",
+    to: `/schedulePage`,
+    active: route.path.startsWith("/schedulePage"),
+  },
+  {
+    label: "Standings",
+    to: `/standingPage`,
+    active: route.path.startsWith("/standingPage"),
+  },
+]);
+</script>
+
+<template>
+  <UHeader class="h-30 w-screen">
+    <template #left>
+      <img
+        src="../assets/images/aachen-open-logo.png"
+        alt="logo"
+        class="h-30 w-auto"
+      />
+      <h5 class="font-bold text-xxl">
+        Aachen Open
+      </h5>
+    </template>
+
+    <template #right>
+      <UNavigationMenu
+        :items="items"
+        highlight
+        highlight-color="primary"
+        class="data-[orientation=horizontal]:border-b border-default data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-48"
+      />
+    </template>
+  </UHeader>
+</template>
+
+<style scoped></style>

@@ -1,0 +1,33 @@
+export type Sport = "badminton" | "futsal" | "basketball" | "volleyball";
+
+export interface team {
+    id: string;
+    name: string;
+    sport: Sport
+    winCount: number;
+    loseCount: number;
+    members?: string[];
+    matches?: schedule[];
+    drawCount?: number;
+    goalAway?: number;
+    goalFor?: number;
+    goalDiff?: number;
+}
+
+export interface schedule {
+id: string;
+sport: Sport
+time: Date;
+teamA: team;
+teamB: team;
+scoreA: number;
+scoreB: number;
+finished: boolean;
+}
+
+export interface group {
+    id: string;
+    sport: Sport;
+    teams: team[];
+}
+
