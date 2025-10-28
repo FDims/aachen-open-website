@@ -4,8 +4,8 @@
     background-color: rgba(0, 0, 0, 0);
 
     .header-logo{
-        height: 10vh;
-        width: auto;
+        height: 75px;
+        width: 75px;
     }
     .header-text{
         font-family: "helvetica world", helvetica, arial, sans-serif ;
@@ -15,7 +15,7 @@
     }
 
     .header-menu{
-        font-size: 1vw;
+        font-size: 15px;
         color: var(--cream);
     }
 }
