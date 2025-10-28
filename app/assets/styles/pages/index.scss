@@ -1,5 +1,9 @@
 .homepage {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
     .homepage-description{
+        flex: auto;
         background-color: var(--blue2);
         display: flex;
         flex-direction: row;
@@ -9,15 +13,15 @@
         border-radius: 10px;
         align-items: center;
         .homepage-description-image {
-            flex: 1;
+            flex: auto;
             display: inline-flex;
-            height: 300px;
-            width: 300px;
+            height: 15%;
+            width: 15%;
             align-items: center;
             .homepage-description-image-logo {
                 margin: auto;
-                height: 300px;
-                width: 300px;
+                height: 80%;
+                width: 80%;
             }
         }
         .homepage-description-text {
@@ -61,31 +65,43 @@
     }
 
     .homepage-schedule-cards-wrapper {
-        width: auto;
+        width: 100%;
+        flex: auto;
+
         .homepage-schedule-cards-title{
-            font-size: 30px;
-            font-weight: bolder;
-            margin: 0 10vw;
-            display: inline-block;
+            width: 100%;
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row;
+            .homepage-schedule-cards-title-text{
+                font-size: 30px;
+                font-weight: bolder;
+                margin: 0 10vw;
+                display: inline-block;
+            }
+            .homepage-schedule-cards-redirect{
+                font-size: 20px;
+                font-weight: bolder;
+                margin: 0 10vw;
+                display: inline-block;
+                position: relative;
+                right: 0;
+            }
         }
-        .homepage-schedule-cards-redirect{
-            font-size: 20px;
-            font-weight: bolder;
-            margin: 0 10vw;
-            display: inline-block;
-            position: absolute;
-            right: 0;
-        }
+
         .homepage-schedule-cards {
             width: 85%  ;
             border: 2px solid var(--cream);
             border-radius: 10px;
             margin: auto;
-            padding: 10px 0 40px 0;
+            padding: 40px 0 10px 0;
         }
     }
+}
 
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .homepage{
+        flex-direction: column-reverse;
         .homepage-description {
             flex-direction: column;
             .homepage-description-image, .homepage-description-text, .homepage-description-infos{

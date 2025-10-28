@@ -112,15 +112,25 @@ const mockTeamB: Team = {
       </div>
     </div>
     <div class="homepage-schedule-cards-wrapper">
-      <h1 class="homepage-schedule-cards-title">Matches:</h1>
-      <ULink class="homepage-schedule-cards-redirect" to="/schedulePage">more matches</ULink>
+      <div class="homepage-schedule-cards-title">
+        <h1 class="homepage-schedule-cards-title-text">Matches of the day:</h1>
+        <ULink class="homepage-schedule-cards-redirect" to="/schedulePage">more matches</ULink>
+      </div>
       <div class="homepage-schedule-cards">
         <UCarousel
           v-slot ="{item}"
           class="homepage-schedule-carousel"
           dots
+          arrows
           :items = "mockSchedule"
-          :ui = "{ item: 'basis-full sm:basis-1/2 md:basis-1/3 '}"
+          :ui = "{
+            item: 'basis-full sm:basis-1/2 md:basis-1/3 ',
+            container: 'transition-[height]',
+            controls: 'absolute -top-4 inset-x-30',
+            dots: '-top-7 hidden sm:flex',
+            dot: 'w-6 h-1',
+            arrows: 'hidden sm:flex'
+            }"
           >
           <match-card :schedule="item" class="homepage-schedule-card"/>
         </UCarousel>

@@ -30,7 +30,8 @@ main{
     height: 80vh;
     margin: 0;
     padding: 2vh 0;
-    overflow: hidden;
+    overflow: auto;
+;
 
 }
 
