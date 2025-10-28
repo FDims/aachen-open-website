@@ -9,6 +9,7 @@ import "~/assets/styles/pages/index.scss";
     sport: "futsal",
     winCount: 0,
     loseCount: 0,
+    points: 0,
   }
 
 const mockTeamB: Team = {
@@ -17,6 +18,7 @@ const mockTeamB: Team = {
   sport: "futsal",
   winCount: 0,
   loseCount: 0,
+  points: 0
 }
 
   const mockSchedule: Schedule[] = [

@@ -6,6 +6,7 @@ export interface Team {
     sport: Sport
     winCount: number;
     loseCount: number;
+    points: number;
     members?: string[];
     matches?: Schedule[];
     drawCount?: number;

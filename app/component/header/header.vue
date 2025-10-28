@@ -16,8 +16,8 @@ const items = computed<NavigationMenuItem[]>(() => [
   },
   {
     label: "Standings",
-    to: `/standingPage`,
-    active: route.path.startsWith("/standingPage"),
+    to: `/standings`,
+    active: route.path.startsWith("/standings"),
   },
 ]);
 </script>
