@@ -103,23 +103,24 @@ const mockTeamB: Team = {
         </div>
         <div class="homepage-infos-location">
           <img src="~/assets/images/location_logo.svg" alt="location-logo"  class="homepage-infos-location-icon" />
-          <ULink class="homepage-infos-location-text" to="https://maps.app.goo.gl/rAQUVeuXEyeDUN1J7">Berufskolleg Nord of StädteRegion Aachen - Location Herzogenrath</ULink>
+          <ULink class="homepage-infos-location-text" to="https://maps.app.goo.gl/rAQUVeuXEyeDUN1J7" target="_blank">Berufskolleg Nord of StädteRegion Aachen - Location Herzogenrath</ULink>
         </div>
         <div class="homepage-infos-instagram">
-          <img src="~/assets/images/instagram_icon.svg" alt="instagram-logo" class="homepage-infos-instagram-icon" />
-          <ULink class="homepage-infos-instagram-text" to="https://www.instagram.com/aachen.open/">@aachen.open</ULink>
+          <img src="~/assets/images/instagram_icon.svg" alt="instagram-logo" class="homepage-infos-instagram-icon"/>
+          <ULink class="homepage-infos-instagram-text" to="https://www.instagram.com/aachen.open/" target="_blank">@aachen.open</ULink>
         </div>
       </div>
     </div>
     <div class="homepage-schedule-cards-wrapper">
       <h1 class="homepage-schedule-cards-title">Matches:</h1>
+      <ULink class="homepage-schedule-cards-redirect" to="/schedulePage">more matches</ULink>
       <div class="homepage-schedule-cards">
         <UCarousel
           v-slot ="{item}"
           class="homepage-schedule-carousel"
-          arrows
+          dots
           :items = "mockSchedule"
-          :ui = "{ item: `basis-1/3`}"
+          :ui = "{ item: 'basis-full sm:basis-1/2 md:basis-1/3 '}"
           >
           <match-card :schedule="item" class="homepage-schedule-card"/>
         </UCarousel>

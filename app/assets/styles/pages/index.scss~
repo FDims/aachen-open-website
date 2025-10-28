@@ -73,8 +73,6 @@
             font-weight: bolder;
             margin: 0 10vw;
             display: inline-block;
-            position: absolute;
-            right: 0;
         }
         .homepage-schedule-cards {
             width: 85%  ;
