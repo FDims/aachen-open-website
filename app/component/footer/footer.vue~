@@ -12,7 +12,7 @@ import "./footer.scss"
       <UIcon name="i-simple-icons-linkedin" class="size-10 shrink-0" />
       <UIcon name="i-simple-icons-facebook" class="size-10 shrink-0" />
     </UMarquee>
-  </div>
+  </UFooter>
 </template>
 
 <style scoped></style>

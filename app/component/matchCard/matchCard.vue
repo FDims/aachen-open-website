@@ -32,39 +32,29 @@ const status = () => {
 </script>
 
 <template>
-  <UCard
-      class="match-card-wrapper"
-      variant="subtle"
-      :ui="{ header: 'sm:p-0 h-2/10', body: 'sm:p-0 h-6/10', footer: 'sm:p-0 h-2/10' }"
+  <div
+      class="match-card-wrapper rounded-lg bg-elevated/50 ring ring-default"
   >
-    <template #header class="p-0">
       <div class="match-card-header">
         <img :src="logo()" alt="sports-logo" class="match-card-header-logo">
         <p class="match-card-header-text">{{props.schedule.sport}}</p>
       </div>
-    </template>
-    <template #default>
       <div class="match-card-body">
-        <div class="match-card-team-home">
-          <h1 class="match-card-name-home">{{props.schedule.teamA.name}}</h1>
-          <h1 class="match-card-score-home">{{props.schedule.scoreA}}</h1>
-        </div>
+        <h1 class="match-card-name-home">{{props.schedule.teamA.name}}</h1>
+        <h1 class="match-card-score-home">{{props.schedule.scoreA}}</h1>
+
         <p>vs</p>
-        <div class="match-card-team-away">
-          <h1 class="match-card-score-away">{{props.schedule.scoreB}}</h1>
-          <h1 class="match-card-name-away">{{props.schedule.teamB.name}}</h1>
-        </div>
+
+        <h1 class="match-card-score-away">{{props.schedule.scoreB}}</h1>
+        <h1 class="match-card-name-away">{{props.schedule.teamB.name}}</h1>
       </div>
-    </template>
-    <template #footer>
       <div class="match-card-footer">
         <div
             :class="'match-card-footer-circle -' + status()"
         ></div>
         <p :class="'match-card-footer-status -' + status()"> {{status()}}</p>
       </div>
-    </template>
-  </UCard>
+  </div>
 </template>
 
 <style scoped></style>

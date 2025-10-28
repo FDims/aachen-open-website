@@ -1,51 +1,58 @@
 .match-card-wrapper{
+    display: flex;
+    flex-direction: column;
     margin: 10px 2vw;
     border-radius: 10px;
     align-items: center;
     justify-items: center;
     text-align: center;
-    width: 20vw;
+    width: 100%;
     height: 25vh;
 
 
     .match-card-header {
+        flex: 1;
         display: flex;
         flex-direction: row;
+        border-bottom: solid 1px var(--cream);
+        width: 85%;
         .match-card-header-logo{
-            margin: auto 10px;
+            margin: auto 10px auto auto;
             width: 30px;
             height: 30px;
         }
         .match-card-header-text {
             display: inline-flex;
             font-size: 25px;
-            margin: auto;
+            margin: auto auto auto 5px;
         }
     }
     .match-card-body{
+        flex: 3;
         display: flex;
         flex-direction: row;
         margin: auto;
         width: 100%;
         overflow: clip;
-        .match-card-team-home,.match-card-team-away {
-            display: flex;
-            flex-direction: row;
+        padding: 0 10px;
+        overflow: hidden;
+
+        .match-card-name-home,
+        .match-card-name-away {
+            flex: 2;
             margin: auto;
-            max-width: 40%;
-            .match-card-name-home,
-            .match-card-name-away {
-                margin: auto;
-                font-size: 25px;
-            }
-            .match-card-score-away,
-            .match-card-score-home {
-                margin: auto 5px;
-                font-size: 40px;
-            }
+            font-size: 25px;
+            overflow: hidden;
+        }
+        .match-card-score-away,
+        .match-card-score-home {
+            flex: 1;
+            margin: auto 5px;
+            font-size: 40px;
         }
 
         p{
+            flex: 1;
             font-weight: bold;
             font-size: 30px;
             margin: auto;
@@ -53,10 +60,13 @@
         }
     }
     .match-card-footer{
+        flex: 1;
         display: flex;
         flex-direction: row;
+        border-top: 1px solid var(--cream) ;
+        width: 75%;
         .match-card-footer-circle {
-            margin: auto 5px;
+            margin: auto 5px auto auto;
             height: 20px;
             width: 20px;
             border-radius: 50%;
@@ -72,6 +82,7 @@
         }
         .match-card-footer-status{
             font-size: 30px;
+            margin: auto auto auto 5px;
             &.-finished{
                 color: var(--cream);
             }

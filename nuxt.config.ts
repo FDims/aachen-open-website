@@ -11,5 +11,6 @@ export default defineNuxtConfig({
         src: "../app/assets/fonts/helvetica-world-regular.woff2"
       }
     ]
-  },
+  }
+
 });
