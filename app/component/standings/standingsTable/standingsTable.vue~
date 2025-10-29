@@ -1,0 +1,95 @@
+<script setup lang="ts">
+import type {Group, Team} from "~~/types";
+  import "./standingsTable.scss";
+  import type {TableColumn} from "#ui/components/Table.vue";
+
+  const props = defineProps<{
+    group: Group;
+  }>()
+
+  const column = () : TableColumn<Team>[] => {
+    if(props.group.sport === "futsal") {
+      return([
+        {
+          accessorKey: 'index',
+          header: ' ',
+          cell: ({ row }) => {
+            return row.index + 1;
+          }
+        },
+        {
+          accessorKey: 'name',
+          header: 'Name',
+        },
+        {
+          accessorKey: 'winCount',
+          header: 'W',
+        },
+        {
+          accessorKey: 'loseCount',
+          header: 'L',
+        },
+        {
+          accessorKey: 'goalAway',
+          header: 'GA',
+        },
+        {
+          accessorKey: 'goalFor',
+          header: 'GF',
+        },
+        {
+          accessorKey: 'goalDiff',
+          header: 'GD',
+        },
+        {
+          accessorKey: 'points',
+          header: 'Pts',
+        },
+      ])
+    } else {
+      return([
+        {
+          accessorKey: 'index',
+          header: ' ',
+          cell: ({ row }) => {
+            return row.index + 1;
+          }
+        },
+        {
+          accessorKey: 'name',
+          header: 'Name',
+        },
+        {
+          accessorKey: 'winCount',
+          header: 'W',
+        },
+        {
+          accessorKey: 'loseCount',
+          header: 'L',
+        },
+        {
+          accessorKey: 'points',
+          header: 'Pts',
+        },
+      ])
+    }
+
+  }
+</script>
+
+<template>
+  <div class="standings-table">
+    <h1 class="standings-table-title">Group {{props.group.name}}</h1>
+    <UTable
+        :data="props.group.teams"
+        :columns="column()"
+        loading-animation="carousel"
+        class="flex-1 text-xl standings-table-data overflow-x-clip"
+    />
+  </div>
+
+</template>
+
+<style scoped>
+
+</style>

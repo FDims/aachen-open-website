@@ -1,0 +1,9 @@
+.standing-group-wrapper{
+  .standing-group-tab{
+    margin: auto;
+
+    .standing-group-tables{
+      margin: auto 2vw;
+    }
+  }
+}
