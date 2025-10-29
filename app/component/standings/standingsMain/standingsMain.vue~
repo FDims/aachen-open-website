@@ -84,7 +84,7 @@ const mockTeams: Team[] = [
   },
   {
     id: "t02",
-    name: "name is so longggggggggg",
+    name: "whatever team",
     sport: "futsal",
     winCount: 0,
     loseCount: 0,

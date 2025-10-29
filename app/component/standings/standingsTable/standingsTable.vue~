@@ -84,7 +84,7 @@ import type {Group, Team} from "~~/types";
         :data="props.group.teams"
         :columns="column()"
         loading-animation="carousel"
-        class="flex-1 text-xl standings-table-data"
+        class="flex-1 text-xl standings-table-data overflow-x-clip"
     />
   </div>
 

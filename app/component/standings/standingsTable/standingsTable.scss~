@@ -1,0 +1,11 @@
+.standings-table {
+  padding: 3vh 3vw;
+  .standings-table-title {
+    font-size: 2.5vw;
+    text-align: center;
+    font-weight: bold;
+  }
+  .standings-table-data{
+    font-size: 10vh;
+  }
+}

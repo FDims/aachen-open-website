@@ -1,7 +1,12 @@
 <script setup lang="ts">
 
 import StandingsTable from "../standingsTable/standingsTable.vue";
-import { Team } from "../../../../types";
+import type {Group} from "~~/types";
+import "./standingGroup.scss";
+
+const props = defineProps<{
+  groups: Group[];
+}>()
 
 const items = [
   {
@@ -14,56 +19,6 @@ const items = [
   },
 ];
 
-const mockTeams: Team[] = [
-  {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0
-  },
-  {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0
-  },
-  {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0
-  },
-  {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0
-  },
-  {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0
-  },
-  {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0
-  }
-]
 </script>
 
 <template>
@@ -75,7 +30,14 @@ const mockTeams: Team[] = [
         playoff
       </template>
       <template #group-stage>
-        <standings-table group-name="Group A" :teams="mockTeams" />
+        <div class="standing-group-tables">
+          <div v-for="group in props.groups">
+            <standings-table
+                :group="group"
+                class="standing-group-table rounded-lg bg-elevated/50 ring ring-default"
+            />
+          </div>
+        </div>
       </template>
     </UTabs>
   </div>

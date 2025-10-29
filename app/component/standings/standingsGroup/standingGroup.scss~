@@ -4,9 +4,6 @@
 
     .standing-group-tables{
       margin: auto 2vw;
-      .standing-group-table{
-        margin: 2vh 2vw;
-      }
     }
   }
 }
