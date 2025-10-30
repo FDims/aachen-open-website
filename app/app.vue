@@ -33,11 +33,12 @@ const volleyballTeams: Team[] = mapRawTeam(data.value.VolleyballTeams);
 const futsalTeams: Team[] = mapRawTeam(data.value.FutsalTeams);
 const badmintonTeams: Team[] = mapRawTeam(data.value.BadmintonTeams);
 const basketballTeams: Team[] = mapRawTeam(data.value.BasketballTeams);
-const schedule: Schedule[] = mapRawSchedule(data.value.Schedule)
+const teams: Team[] = volleyballTeams.concat(futsalTeams.concat(badmintonTeams.concat(basketballTeams)));
+const schedule: Schedule[] = mapRawSchedule(data.value.Schedule, teams)
 
 provide("volleyballTeams", volleyballTeams);
 provide("futsalTeams", futsalTeams);
 provide("badmintonTeams", badmintonTeams);
 provide("basketballTeams", basketballTeams);
-provide("schedule", schedule);
+provide("schedules", schedule);
 </script>

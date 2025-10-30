@@ -10,6 +10,8 @@ const props = defineProps<{
   schedule: Schedule,
 }>()
 
+console.log(props.schedule.time.toLocaleTimeString())
+
 const logo = () => {
   if (props.schedule.sport === "futsal")
     return futsalLogo;
@@ -52,7 +54,7 @@ const status = () => {
         <div
             :class="'match-card-footer-circle -' + status()"
         ></div>
-        <p :class="'match-card-footer-status -' + status()"> {{status() == "upcoming" ? "scheduled " + props.schedule.time.toLocaleTimeString() : status()}}</p>
+        <p :class="'match-card-footer-status -' + status()"> {{status() == "upcoming" ? "scheduled" + props.schedule.time.toLocaleTimeString() : status()}}</p>
       </div>
   </div>
 </template>

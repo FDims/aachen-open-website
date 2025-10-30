@@ -34,7 +34,7 @@
         margin: auto;
         width: 100%;
         overflow: clip;
-        padding: 0 10px;
+        padding: 10px;
         overflow: hidden;
 
         .match-card-name-home,
@@ -85,11 +85,13 @@
             margin: auto auto auto 5px;
             &.-finished{
                 color: var(--cream);
+                font-size: 15px;
             }
             &.-live{
                 color: #00DC82;
             }
             &.-upcoming{
+                font-size: 15px;
                 color: var(--red2);
             }
         }

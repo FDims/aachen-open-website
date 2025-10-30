@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import StandingGroup from "../standingsGroup/standingGroup.vue";
-import type {Team,Group} from "~~/types";
+import type {Group} from "~~/types"
+
+const badmintonTeams = inject<Team[]>("badmintonTeams");
+const basketballTeams = inject<Team[]>("basketballTeams");
+const futsalTeams = inject<Team[]>("futsalTeams");
+const volleyballTeams = inject<Team[]>("volleyballTeams");
+
 
 const items = [
   {
@@ -21,91 +27,89 @@ const items = [
   },
 ];
 
-const mockTeams: Team[] = [
+const badmintonGroups: Group[] = [
   {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'A',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    name: "Group A",
+    sport: "badminton",
+    teams: badmintonTeams.filter((team) => team.group == "A")
   },
   {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'A',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    name: "Group B",
+    sport: "badminton",
+    teams: badmintonTeams.filter((team) => team.group == "B")
   },
   {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'A',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    name: "Group C",
+    sport: "badminton",
+    teams: badmintonTeams.filter((team) => team.group == "C")
   },
   {
-    id: "t02",
-    name: "whatever team",
+    name: "Group D",
+    sport: "badminton",
+    teams: badmintonTeams.filter((team) => team.group == "D")
+  }
+  ]
+
+
+const futsalGroups: Group[] = [
+  {
+    name: "Group A",
     sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'B',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    teams: futsalTeams.filter((team) => team.group == "A")
   },
   {
-    id: "t02",
-    name: "whatever team",
+    name: "Group B",
     sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'B',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    teams: futsalTeams.filter((team) => team.group == "B")
   },
   {
-    id: "t02",
-    name: "whatever team",
+    name: "Group C",
     sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'B',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    teams: futsalTeams.filter((team) => team.group == "C")
+  },
+  {
+    name: "Group D",
+    sport: "futsal",
+    teams: futsalTeams.filter((team) => team.group == "D")
   }
 ]
 
-const group: Group[] = [{
-  name: 'A',
-  sport:"futsal",
-  teams: mockTeams.filter((team) => team.group=='A')
-},
+const volleyballGroups: Group[] = [
   {
-    name: 'B',
-    sport:"futsal",
-    teams: mockTeams.filter((team) => team.group=='B')
-  }]
+    name: "Group A",
+    sport: "volleyball",
+    teams: volleyballTeams.filter((team) => team.group == "A")
+  },
+  {
+    name: "Group B",
+    sport: "volleyball",
+    teams: volleyballTeams.filter((team) => team.group == "B")
+  },
+  {
+    name: "Group C",
+    sport: "volleyball",
+    teams: volleyballTeams.filter((team) => team.group == "C")
+  },
+  {
+    name: "Group D",
+    sport: "volleyball",
+    teams: volleyballTeams.filter((team) => team.group == "D")
+  }
+]
+
+const basketballGroups: Group[] = [
+  {
+    name: "Group A",
+    sport: "basketball",
+    teams: basketballTeams.filter((team) => team.group == "A")
+  },
+  {
+    name: "Group B",
+    sport: "basketball",
+    teams: basketballTeams.filter((team) => team.group == "B")
+  },
+]
+
 </script>
 
 <template>
@@ -114,16 +118,16 @@ const group: Group[] = [{
   >
     <UTabs :items="items" color="neutral" size="xl">
       <template #badminton>
-        <standing-group :groups="group"/>
+        <standing-group :groups="badmintonGroups"/>
       </template>
       <template #basketball>
-        <standing-group :groups="group"/>
+        <standing-group :groups="basketballGroups"/>
       </template>
       <template #volleyball>
-        <standing-group :groups="group"/>
+        <standing-group :groups="volleyballGroups"/>
       </template>
       <template #futsal>
-        <standing-group :groups="group"/>
+        <standing-group :groups="futsalGroups"/>
       </template>
     </UTabs>
   </div>

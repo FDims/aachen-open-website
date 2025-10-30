@@ -68,7 +68,7 @@ export default cachedEventHandler(async (event) => {
         });
     }
 }, {
-    // Cache the response for 180 seconds
-    maxAge: 180
+    // Cache the response for 60 seconds
+    maxAge: 60
 })
 
