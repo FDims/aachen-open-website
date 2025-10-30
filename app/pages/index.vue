@@ -16,7 +16,7 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
       <div class="homepage-description-text">
         <h5>Aachen Open 2025</h5>
         <h3>Tri-Nation League</h3>
-        <p> A sport league organized by Perhimpunan Pelajar Indonesia Aachen (Indonesian Student Organization in Aachen),
+        <p> A sport league organized by Perhimpunan Pelajar Indonesia Aachen (Indonesian Student Association in Aachen),
           Malaysisch-Aachener Klub (Malaysian Organization in Aachen) and Verein der chinesichen
           Wissenschaftler und Studenten in Aachen (Chinese Student and Scientist Organization in Aachen). </p>
       </div>
