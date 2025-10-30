@@ -11,7 +11,7 @@ export interface Team {
     members?: string[];
     matches?: Schedule[];
     drawCount?: number;
-    goalAway?: number;
+    goalAgainst?: number;
     goalFor?: number;
     goalDiff?: number;
 }

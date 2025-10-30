@@ -85,11 +85,14 @@
             margin: auto auto auto 5px;
             &.-finished{
                 color: var(--cream);
+                font-size: 15px;
             }
             &.-live{
                 color: #00DC82;
+                font-size: 20px;
             }
             &.-upcoming{
+                font-size: 15px;
                 color: var(--red2);
             }
         }

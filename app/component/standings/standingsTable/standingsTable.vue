@@ -30,7 +30,7 @@ import type {Group, Team} from "~~/types";
           header: 'L',
         },
         {
-          accessorKey: 'goalAway',
+          accessorKey: 'goalAgainst',
           header: 'GA',
         },
         {

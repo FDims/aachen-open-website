@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import StandingsMain from "../component/standings/standingsMain/standingsMain.vue";
+
+console.log(badmintonTeams?.values());
 </script>
 
 <template>
