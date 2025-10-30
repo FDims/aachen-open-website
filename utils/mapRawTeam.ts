@@ -1,0 +1,24 @@
+import type {Team} from "../types";
+
+export function mapRawTeam(rawTeams: any[]): Team[] {
+    const resultTeams: Team[] = [];
+    rawTeams.forEach(rawTeam => {
+        const team: Team = {
+            id: rawTeam.id,
+            name: rawTeam.name,
+            sport: rawTeam.sport,
+            winCount: rawTeam.winCount,
+            loseCount: rawTeam.loseCount,
+            points: rawTeam.points,
+            group: rawTeam.group,
+            members: rawTeam.members,
+            drawCount: rawTeam.drawCount,
+            goalAway: rawTeam.goalAway,
+            goalFor: rawTeam.goalFor,
+            goalDiff: rawTeam.goalDiff,
+        }
+        resultTeams.push(team);
+    })
+
+    return resultTeams;
+}
