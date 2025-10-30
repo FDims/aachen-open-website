@@ -14,7 +14,6 @@ export interface Team {
     goalAway?: number;
     goalFor?: number;
     goalDiff?: number;
-    winnerTeam: string;
 }
 
 export interface Schedule {
@@ -26,6 +25,7 @@ export interface Schedule {
     scoreA: number;
     scoreB: number;
     finished: boolean;
+    winnerTeam: string;
 }
 
 export interface Group {
