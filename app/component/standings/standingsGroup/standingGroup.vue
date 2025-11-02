@@ -3,6 +3,7 @@
 import StandingsTable from "../standingsTable/standingsTable.vue";
 import type {Group} from "~~/types";
 import "./standingGroup.scss";
+import StandingPlayoff from "~/component/standings/standingsPlayoff/standingPlayoff.vue";
 
 const props = defineProps<{
   groups: Group[];
@@ -27,7 +28,7 @@ const items = [
   >
     <UTabs :items="items" color="error" class="standing-group-tab">
       <template #playoff>
-        playoff
+        <standing-playoff />
       </template>
       <template #group-stage>
         <div class="standing-group-tables">

@@ -1,0 +1,90 @@
+.round-title {
+  @apply text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 text-center;
+}
+
+.connector-column {
+  @apply w-4 sm:w-10 md:w-16;
+}
+
+.connector-line {
+  @apply w-full h-full border-gray-400 dark:border-gray-600;
+  position: relative;
+}
+
+/* Quarter-Final to Semi-Final connectors */
+.qf-sf {
+  @apply border-r-2; /* Vertical line shared by two */
+  height: 50%;
+}
+.qf-sf:first-child {
+  @apply border-t-2;
+}
+.qf-sf:last-child {
+  @apply border-b-2;
+}
+/* Horizontal line coming from the left */
+.qf-sf::before {
+  content: '';
+  @apply absolute border-t-2 border-gray-400 dark:border-gray-600;
+  width: 100%;
+  top: 50%;
+  left: -100%;
+}
+/* Clear the top line for the second connector */
+.qf-sf:last-child::before {
+  top: auto;
+  bottom: 50%;
+}
+
+/* Semi-Final to Final connectors */
+.sf-f {
+  .sf-f {
+    @apply border-r-2 border-t-2 border-b-2;
+    height: 50%;
+  }
+
+  .sf-f::before {
+    content: '';
+    @apply absolute border-t-2 border-gray-400 dark:border-gray-600;
+    width: 100%;
+    top: 50%;
+    left: -100%;
+  }
+
+  /* Final to Winner connectors */
+  .f-w {
+    @apply border-t-2 border-gray-400 dark:border-gray-600;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    position: relative;
+  }
+
+  /* Mobile responsive layout */
+  @media (max-width: 640px) {
+    .bracket-area {
+      @apply flex-col items-center space-x-0 space-y-4;
+    }
+    .round-column {
+      @apply space-y-4;
+    }
+    .connector-column {
+      @apply w-full h-8 rotate-90;
+    }
+    .connector-line.qf-sf::before {
+      display: none; /* Hide horizontal lines on mobile */
+    }
+    .connector-line.sf-f {
+      height: 100%;
+      border-right: 0;
+      border-top: 2px; /* Becomes the horizontal connector */
+    }
+    .sf-f::before {
+      display: none;
+    }
+    .f-w {
+      width: 2px;
+      height: 3rem;
+    }
+  }
+}
