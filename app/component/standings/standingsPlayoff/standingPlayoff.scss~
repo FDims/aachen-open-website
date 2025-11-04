@@ -1,5 +1,6 @@
 .standing-playoff__wrapper {
   width: 90%;
+  max-height: 90%;
   margin: auto;
   .standing-playoff__container {
 

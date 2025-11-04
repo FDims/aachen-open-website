@@ -8,9 +8,6 @@
       font-style: italic;
       border-bottom: solid 1px var(--red2);
       width: 100%;
-      span {
-        padding: 0 5px;
-      }
     }
   }
 

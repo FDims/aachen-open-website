@@ -1,82 +1,64 @@
+<script setup lang="ts">
+import type {Schedule} from "~~/types";
+import "./standingPlayoffCard.scss";
+
+defineProps<{
+  match: Schedule;
+}>()
+</script>
+
 <template>
-  <UCard :ui="{ body: { padding: 'p-3 sm:p-4' } }">
-    <div class="flex justify-between items-center mb-2">
-      <span class="text-xs text-gray-500 dark:text-gray-400">Match {{ match.id }}</span>
+  <UCard :ui="{ body: { padding: 'p-1 sm:p-2' } }" class="playoff-card">
+    <div class="playoff-card__badge-wrapper">
       <UBadge
-        :color="match.status === 'Final' ? 'gray' : 'green'"
-        :label="match.status"
+        :color="match.type == 'final' ? 'gray' : 'green'"
+        :label="match.sport + ' ' + match.type"
+        class="playoff-card__badge"
         variant="subtle"
-        size="xs"
+        size="small"
       />
     </div>
 
-    <div class="space-y-2">
-      <!-- Team 1 -->
-      <div class="flex justify-between items-center">
+    <!-- Team A -->
+    <div class="playoff-card__content">
+      <div class="playoff-card__teamA">
         <span
-          class="text-sm"
+          class="playoff-card__teamA-name"
           :class="{
-            'font-bold text-gray-900 dark:text-white': match.winner === 'team1',
-            'text-gray-600 dark:text-gray-300': match.winner !== 'team1'
+            ' -winner' : match.scoreA > match.scoreB
           }"
         >
-          {{ match.team1.name }}
+          {{ match.teamA ? match.teamA.name : "TBD" }}
         </span>
         <span
-          class="text-sm font-semibold"
+          class="playoff-card__teamA-score"
           :class="{
-            'font-bold text-gray-900 dark:text-white': match.winner === 'team1',
-            'text-gray-500 dark:text-gray-400': match.winner !== 'team1'
+            ' -winner': match.scoreA > match.scoreB
           }"
         >
-          {{ match.team1.score ?? '-' }}
+          {{ match.teamA && match.finished ? match.scoreA.toString() : '-' }}
         </span>
       </div>
 
-      <!-- Team 2 -->
-      <div class="flex justify-between items-center">
+      <!-- Team B -->
+      <div class="playoff-card__teamB">
         <span
-          class="text-sm"
+          class="playoff-card__teamB-name"
           :class="{
-            'font-bold text-gray-900 dark:text-white': match.winner === 'team2',
-            'text-gray-600 dark:text-gray-300': match.winner !== 'team2'
+            ' -winner': match.scoreA < match.scoreB
           }"
         >
-          {{ match.team2.name }}
+          {{ match.teamB  ? match.teamB.name : "TBD" }}
         </span>
         <span
-          class="text-sm font-semibold"
+          class="playoff-card__teamB-score"
           :class="{
-            'font-bold text-gray-900 dark:text-white': match.winner === 'team2',
-            'text-gray-500 dark:text-gray-400': match.winner !== 'team2'
+            ' -winner': match.scoreA < match.scoreB,
           }"
         >
-          {{ match.team2.score ?? '-' }}
+          {{ match.teamB && match.finished ? match.scoreB.toString() : '-' }}
         </span>
       </div>
     </div>
   </UCard>
 </template>
-
-<script setup lang="ts">
-// Define the props this component accepts
-interface Team {
-  name: string;
-  score: number | null;
-}
-
-interface Match {
-  id: string;
-  team1: Team;
-  team2: Team;
-  status: 'Pending' | 'Live' | 'Final';
-  winner?: 'team1' | 'team2' | null;
-}
-
-defineProps({
-  match: {
-    type: Object as () => Match,
-    required: true,
-  },
-});
-</script>
