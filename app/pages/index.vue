@@ -11,7 +11,7 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
   <div class="homepage">
     <div class="homepage-description">
       <div class="homepage-description-image">
-        <img src="~/assets/images/aachen-open-logo.png" alt="Aachen Open Logo" class="homepage-description-image-logo"/>
+        <img src="~/assets/images/aachen-open-logo.svg" alt="Aachen Open Logo" class="homepage-description-image-logo"/>
       </div>
       <div class="homepage-description-text">
         <h5>Aachen Open 2025</h5>
