@@ -1,0 +1,33 @@
+.playoff-card {
+  div {
+    padding: 5px;
+  }
+  .playoff-card__badge-wrapper {
+    .playoff-card__badge {
+      font-size: 12px;
+      font-style: italic;
+      border-bottom: solid 1px var(--red2);
+      width: 100%;
+      span {
+        padding: 0 5px;
+      }
+    }
+  }
+
+  .playoff-card__content {
+    .playoff-card__teamA{
+      border-bottom: solid 1px var(--cream);
+      margin-bottom: 3px;
+    }
+    .playoff-card__teamA, .playoff-card__teamB {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .playoff-card__teamA-name, .playoff-card__teamB-name, .playoff-card__teamA-score, .playoff-card__teamB-score {
+        &.-winner{
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
