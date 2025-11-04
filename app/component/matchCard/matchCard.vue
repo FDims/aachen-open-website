@@ -40,19 +40,19 @@ const status = () => {
         <p class="match-card-header-text">{{props.schedule.sport}}</p>
       </div>
       <div class="match-card-body">
-        <h1 class="match-card-name-home">{{props.schedule.teamA.name}}</h1>
-        <h1 class="match-card-score-home">{{props.schedule.scoreA}}</h1>
+        <h1 class="match-card-name-home">{{props.schedule.teamA ? props.schedule.teamA.name : "TBD"}}</h1>
+        <h1 class="match-card-score-home">{{props.schedule.scoreA ?? "-"}}</h1>
 
         <p>vs</p>
 
-        <h1 class="match-card-score-away">{{props.schedule.scoreB}}</h1>
-        <h1 class="match-card-name-away">{{props.schedule.teamB.name}}</h1>
+        <h1 class="match-card-score-away">{{props.schedule.scoreB ?? "-"}}</h1>
+        <h1 class="match-card-name-away">{{props.schedule.teamB ? props.schedule.teamB.name : "TBD"}}</h1>
       </div>
       <div class="match-card-footer">
         <div
             :class="'match-card-footer-circle -' + status()"
         ></div>
-        <p :class="'match-card-footer-status -' + status()"> {{status()}}</p>
+        <p :class="'match-card-footer-status -' + status()"> {{status() == "upcoming" ? "scheduled " + props.schedule.time.toLocaleTimeString() : status()}}</p>
       </div>
   </div>
 </template>

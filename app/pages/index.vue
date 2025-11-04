@@ -3,98 +3,21 @@ import type {Schedule, Team} from "~~/types";
 import MatchCard from "~/component/matchCard/matchCard.vue";
 import "~/assets/styles/pages/index.scss";
 
-  const mockTeamA: Team = {
-    id: "t01",
-    name: "Test for a long team name",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-  }
-
-const mockTeamB: Team = {
-  id: "t02",
-  name: "whatever team",
-  sport: "futsal",
-  winCount: 0,
-  loseCount: 0,
-  points: 0
-}
-
-  const mockSchedule: Schedule[] = [
-    {
-      id: "m01",
-      sport: "futsal",
-      time: new Date(2025, 8, 12, 12, 15),
-      teamA: mockTeamA,
-      teamB: mockTeamB,
-      scoreA: 0,
-      scoreB: 0,
-      finished: true,
-    },
-    {
-      id: "m01",
-      sport: "badminton",
-      time: new Date(),
-      teamA: mockTeamA,
-      teamB: mockTeamB,
-      scoreA: 0,
-      scoreB: 0,
-      finished: false,
-    },
-    {
-      id: "m01",
-      sport: "basketball",
-      time: new Date(2025, 10, 12, 12, 15),
-      teamA: mockTeamA,
-      teamB: mockTeamB,
-      scoreA: 0,
-      scoreB: 0,
-      finished: false,
-    },
-    {
-      id: "m01",
-      sport: "volleyball",
-      time: new Date(2025, 10, 12, 12, 15),
-      teamA: mockTeamA,
-      teamB: mockTeamB,
-      scoreA: 0,
-      scoreB: 0,
-      finished: false,
-    },
-    {
-      id: "m01",
-      sport: "futsal",
-      time: new Date(2025, 10, 12, 12, 15),
-      teamA: mockTeamA,
-      teamB: mockTeamB,
-      scoreA: 0,
-      scoreB: 0,
-      finished: false,
-    },
-    {
-      id: "m01",
-      sport: "futsal",
-      time: new Date(2025, 10, 12, 12, 15),
-      teamA: mockTeamA,
-      teamB: mockTeamB,
-      scoreA: 0,
-      scoreB: 0,
-      finished: false,
-    }
-  ]
+const time = new Date();
+const eventTime = new Date(2025, 12, 6);
+const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.time.getDate() == time.getDate());
 </script>
 
 <template>
   <div class="homepage">
     <div class="homepage-description">
       <div class="homepage-description-image">
-        <img src="~/assets/images/aachen-open-logo.png" alt="Aachen Open Logo" class="homepage-description-image-logo"/>
+        <img src="~/assets/images/aachen-open-logo.svg" alt="Aachen Open Logo" class="homepage-description-image-logo"/>
       </div>
       <div class="homepage-description-text">
         <h5>Aachen Open 2025</h5>
         <h3>Tri-Nation League</h3>
-        <p> A sport league organized by Perhimpunan Pelajar Indonesia Aachen (Indonesian Student Organization in Aachen),
+        <p> A sport league organized by Perhimpunan Pelajar Indonesia Aachen (Indonesian Student Association in Aachen),
           Malaysisch-Aachener Klub (Malaysian Organization in Aachen) and Verein der chinesichen
           Wissenschaftler und Studenten in Aachen (Chinese Student and Scientist Organization in Aachen). </p>
       </div>
@@ -116,15 +39,16 @@ const mockTeamB: Team = {
     <div class="homepage-schedule-cards-wrapper">
       <div class="homepage-schedule-cards-title">
         <h1 class="homepage-schedule-cards-title-text">Matches of the day:</h1>
-        <ULink class="homepage-schedule-cards-redirect" to="/schedulePage">more matches</ULink>
+        <ULink class="homepage-schedule-cards-redirect" to="/schedulePage">click for schedule</ULink>
       </div>
       <div class="homepage-schedule-cards">
         <UCarousel
+            v-if="time >= eventTime"
           v-slot ="{item}"
           class="homepage-schedule-carousel"
           dots
           arrows
-          :items = "mockSchedule"
+          :items = "schedules"
           :ui = "{
             item: 'basis-full sm:basis-1/2 md:basis-1/3 ',
             container: 'transition-[height]',
@@ -136,6 +60,11 @@ const mockTeamB: Team = {
           >
           <match-card :schedule="item" class="homepage-schedule-card"/>
         </UCarousel>
+        <div v-else class="homepage-schedule-coming-soon">
+          <h1>
+            Coming Soon!
+          </h1>
+        </div>
       </div>
     </div>
   </div>

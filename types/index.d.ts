@@ -1,4 +1,5 @@
 export type Sport = "badminton" | "futsal" | "basketball" | "volleyball";
+export type Bracket = "semi" | "quarter" | 'final' | 'group';
 
 export interface Team {
     id: string;
@@ -11,7 +12,7 @@ export interface Team {
     members?: string[];
     matches?: Schedule[];
     drawCount?: number;
-    goalAway?: number;
+    goalAgainst?: number;
     goalFor?: number;
     goalDiff?: number;
 }
@@ -19,13 +20,14 @@ export interface Team {
 export interface Schedule {
     id: string;
     sport: Sport
+    type: Bracket;
     time: Date;
-    teamA: Team;
-    teamB: Team;
+    teamA?: Team;
+    teamB?: Team;
     scoreA: number;
     scoreB: number;
     finished: boolean;
-    winnerTeam: string;
+    winnerTeam?: string;
 }
 
 export interface Group {

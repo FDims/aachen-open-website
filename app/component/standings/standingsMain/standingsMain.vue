@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import StandingGroup from "../standingsGroup/standingGroup.vue";
-import type {Team,Group} from "~~/types";
+import type {Group, Schedule} from "~~/types"
+
+const badmintonTeams = inject<Team[]>("badmintonTeams");
+const basketballTeams = inject<Team[]>("basketballTeams");
+const futsalTeams = inject<Team[]>("futsalTeams");
+const volleyballTeams = inject<Team[]>("volleyballTeams");
+const schedules = inject<Schedule[]>("schedules");
+
 
 const items = [
   {
@@ -21,91 +28,94 @@ const items = [
   },
 ];
 
-const mockTeams: Team[] = [
+const badmintonGroups: Group[] = [
   {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'A',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    name: "A",
+    sport: "badminton",
+    teams: badmintonTeams.filter((team) => team.group == "A")
   },
   {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'A',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    name: "B",
+    sport: "badminton",
+    teams: badmintonTeams.filter((team) => team.group == "B")
   },
   {
-    id: "t02",
-    name: "whatever team",
-    sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'A',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    name: "C",
+    sport: "badminton",
+    teams: badmintonTeams.filter((team) => team.group == "C")
   },
   {
-    id: "t02",
-    name: "whatever team",
+    name: "D",
+    sport: "badminton",
+    teams: badmintonTeams.filter((team) => team.group == "D")
+  }
+  ]
+
+
+const futsalGroups: Group[] = [
+  {
+    name: "A",
     sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'B',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    teams: futsalTeams.filter((team) => team.group == "A")
   },
   {
-    id: "t02",
-    name: "whatever team",
+    name: "B",
     sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'B',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    teams: futsalTeams.filter((team) => team.group == "B")
   },
   {
-    id: "t02",
-    name: "name is so longggggggggg",
+    name: "C",
     sport: "futsal",
-    winCount: 0,
-    loseCount: 0,
-    points: 0,
-    group:'B',
-    goalAway:0,
-    goalFor:0,
-    goalDiff:0,
+    teams: futsalTeams.filter((team) => team.group == "C")
+  },
+  {
+    name: "D",
+    sport: "futsal",
+    teams: futsalTeams.filter((team) => team.group == "D")
   }
 ]
 
-const group: Group[] = [{
-  name: 'A',
-  sport:"futsal",
-  teams: mockTeams.filter((team) => team.group=='A')
-},
+const volleyballGroups: Group[] = [
   {
-    name: 'B',
-    sport:"futsal",
-    teams: mockTeams.filter((team) => team.group=='B')
-  }]
+    name: "A",
+    sport: "volleyball",
+    teams: volleyballTeams.filter((team) => team.group == "A")
+  },
+  {
+    name: "B",
+    sport: "volleyball",
+    teams: volleyballTeams.filter((team) => team.group == "B")
+  },
+  {
+    name: "C",
+    sport: "volleyball",
+    teams: volleyballTeams.filter((team) => team.group == "C")
+  },
+  {
+    name: "D",
+    sport: "volleyball",
+    teams: volleyballTeams.filter((team) => team.group == "D")
+  }
+]
+
+const basketballGroups: Group[] = [
+  {
+    name: "A",
+    sport: "basketball",
+    teams: basketballTeams.filter((team) => team.group == "A")
+  },
+  {
+    name: "B",
+    sport: "basketball",
+    teams: basketballTeams.filter((team) => team.group == "B")
+  },
+]
+
+const badmintonPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "badminton" && schedule.type != "group");
+const basketballPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "basketball" && schedule.type != "group");
+const futsalPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "futsal" && schedule.type != "group");
+const voleyballPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "volleyball" && schedule.type != "group");
+
 </script>
 
 <template>
@@ -114,16 +124,16 @@ const group: Group[] = [{
   >
     <UTabs :items="items" color="neutral" size="xl">
       <template #badminton>
-        <standing-group :groups="group"/>
+        <standing-group :groups="badmintonGroups" :playoff="badmintonPlayoff" bracket="quarter"/>
       </template>
       <template #basketball>
-        <standing-group :groups="group"/>
+        <standing-group :groups="basketballGroups" :playoff="basketballPlayoff" bracket="semi"/>
       </template>
       <template #volleyball>
-        <standing-group :groups="group"/>
+        <standing-group :groups="volleyballGroups" :playoff="voleyballPlayoff" bracket="quarter"/>
       </template>
       <template #futsal>
-        <standing-group :groups="group"/>
+        <standing-group :groups="futsalGroups" :playoff="futsalPlayoff" bracket="quarter"/>
       </template>
     </UTabs>
   </div>
