@@ -4,6 +4,7 @@ import MatchCard from "~/component/matchCard/matchCard.vue";
 import "~/assets/styles/pages/index.scss";
 
 const time = new Date();
+const eventTime = new Date(2025, 12, 6);
 const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.time.getDate() == time.getDate());
 </script>
 
@@ -42,6 +43,7 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
       </div>
       <div class="homepage-schedule-cards">
         <UCarousel
+            v-if="time >= eventTime"
           v-slot ="{item}"
           class="homepage-schedule-carousel"
           dots
@@ -58,6 +60,11 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
           >
           <match-card :schedule="item" class="homepage-schedule-card"/>
         </UCarousel>
+        <div v-else class="homepage-schedule-coming-soon">
+          <h1>
+            Coming Soon!
+          </h1>
+        </div>
       </div>
     </div>
   </div>
