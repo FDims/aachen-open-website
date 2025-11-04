@@ -11,13 +11,15 @@ const items = computed<NavigationMenuItem[]>(() => [
   },
   {
     label: "Schedule",
-    to: `/schedulePage`,
-    active: route.path.startsWith("/schedulePage"),
+    to: `/schedules`,
+    active: route.path.startsWith("/schedules"),
+    disabled: true,
   },
   {
-    label: "Standings",
+    label: "Standing",
     to: `/standings`,
     active: route.path.startsWith("/standings"),
+    disabled: true,
   },
 ]);
 </script>

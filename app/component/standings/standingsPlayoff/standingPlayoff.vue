@@ -69,7 +69,7 @@ const getWinner = (match: Schedule): string => {
             <UCard class="standing-playoff__winner__card">
               <div class="standing-playoff__winner__card__wrapper">
                 <span class="standing-playoff__winner__team">
-                  {{ getWinner(bracketData.final) }}
+                  {{ getWinner(bracketData.final[0]) }}
                 </span>
               </div>
             </UCard>

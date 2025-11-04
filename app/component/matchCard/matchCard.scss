@@ -23,8 +23,11 @@
         }
         .match-card-header-text {
             display: inline-flex;
-            font-size: 25px;
+            font-size: 3vh;
             margin: auto auto auto 5px;
+            @media (max-width: 640px) {
+                font-size: 2vh;
+            }
         }
     }
     .match-card-body{

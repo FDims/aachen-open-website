@@ -4,8 +4,8 @@ import MatchCard from "~/component/matchCard/matchCard.vue";
 import "~/assets/styles/pages/index.scss";
 
 const time = new Date();
-const eventTime = new Date(2025, 12, 6);
-const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.time.getDate() == time.getDate());
+const eventTime = new Date(2025, 11, 6);
+const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.actualTime.getDate() == time.getDate());
 </script>
 
 <template>
@@ -39,22 +39,19 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
     <div class="homepage-schedule-cards-wrapper">
       <div class="homepage-schedule-cards-title">
         <h1 class="homepage-schedule-cards-title-text">Matches of the day:</h1>
-        <ULink class="homepage-schedule-cards-redirect" to="/schedulePage">click for schedule</ULink>
+        <ULink class="homepage-schedule-cards-redirect" to="/schedules" :disabled="true" >click for schedule</ULink>
       </div>
       <div class="homepage-schedule-cards">
         <UCarousel
             v-if="time >= eventTime"
           v-slot ="{item}"
           class="homepage-schedule-carousel"
-          dots
           arrows
           :items = "schedules"
           :ui = "{
             item: 'basis-full sm:basis-1/2 md:basis-1/3 ',
             container: 'transition-[height]',
             controls: 'absolute -top-4 inset-x-30',
-            dots: '-top-7 hidden sm:flex',
-            dot: 'w-6 h-1',
             arrows: 'hidden sm:flex'
             }"
           >
@@ -66,6 +63,11 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
           </h1>
         </div>
       </div>
+      <p
+        class="homepage-schedule-swipe-text"
+      >
+        swipe for more!
+      </p>
     </div>
   </div>
 </template>

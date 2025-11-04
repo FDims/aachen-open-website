@@ -5,6 +5,7 @@ import futsalLogo from '~/assets/images/football_logo.svg';
 import badmintonLogo from '~/assets/images/badminton_logo.svg';
 import volleyballLogo from '~/assets/images/volleyball_logo.svg';
 import basketballLogo from '~/assets/images/basketball_logo.svg';
+import { getSportName } from "../../../utils/getSportName";
 
 const props = defineProps<{
   schedule: Schedule,
@@ -13,7 +14,7 @@ const props = defineProps<{
 const logo = () => {
   if (props.schedule.sport === "futsal")
     return futsalLogo;
-  if (props.schedule.sport === "badminton")
+  if (props.schedule.sport.startsWith("badminton"))
     return badmintonLogo
   if (props.schedule.sport === "volleyball")
     return volleyballLogo
@@ -25,7 +26,7 @@ const status = () => {
   const now = new Date();
   if(props.schedule.finished)
     return "finished"
-  else if(!props.schedule.finished && props.schedule.time <= now)
+  else if(!props.schedule.finished && props.schedule.actualTime <= now)
     return "live"
   else return "upcoming"
 }
@@ -37,7 +38,7 @@ const status = () => {
   >
       <div class="match-card-header">
         <img :src="logo()" alt="sports-logo" class="match-card-header-logo">
-        <p class="match-card-header-text">{{props.schedule.sport}}</p>
+        <p class="match-card-header-text">{{getSportName(props.schedule.sport)}}</p>
       </div>
       <div class="match-card-body">
         <h1 class="match-card-name-home">{{props.schedule.teamA ? props.schedule.teamA.name : "TBD"}}</h1>
@@ -52,7 +53,7 @@ const status = () => {
         <div
             :class="'match-card-footer-circle -' + status()"
         ></div>
-        <p :class="'match-card-footer-status -' + status()"> {{status() == "upcoming" ? "scheduled " + props.schedule.time.toLocaleTimeString() : status()}}</p>
+        <p :class="'match-card-footer-status -' + status()"> {{status() == "upcoming" ? props.schedule.actualTime.toLocaleTimeString() : status()}}</p>
       </div>
   </div>
 </template>

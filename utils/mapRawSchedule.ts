@@ -7,7 +7,8 @@ export function mapRawSchedule (rawSchedule: any[], teams: Team[]): Schedule[] {
             const schedule: Schedule = {
                 id: rawSchedule.id,
                 sport: rawSchedule.sport,
-                time: new Date(rawSchedule.time),
+                scheduled: new Date(rawSchedule.scheduled),
+                actualTime: new Date(rawSchedule.actualTime ? rawSchedule.actualTime : rawSchedule.scheduled),
                 type: rawSchedule.type,
                 teamA: teams.find(team => team.id == rawSchedule.teamA_Id),
                 teamB: teams.find(team => team.id == rawSchedule.teamB_Id),

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type {Schedule} from "~~/types";
 import "./standingPlayoffCard.scss";
+import { getSportName } from "~~/utils/getSportName";
 
 defineProps<{
   match: Schedule;
@@ -12,7 +13,7 @@ defineProps<{
     <div class="playoff-card__badge-wrapper">
       <UBadge
         :color="match.type == 'final' ? 'gray' : 'green'"
-        :label="match.sport + ' ' + match.type"
+        :label="getSportName(match.sport) + ' ' + match.type"
         class="playoff-card__badge"
         variant="subtle"
         size="small"
