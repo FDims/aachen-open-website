@@ -39,7 +39,7 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
     <div class="homepage-schedule-cards-wrapper">
       <div class="homepage-schedule-cards-title">
         <h1 class="homepage-schedule-cards-title-text">Matches of the day:</h1>
-        <ULink class="homepage-schedule-cards-redirect" to="/schedulePage">click for schedule</ULink>
+        <ULink class="homepage-schedule-cards-redirect" to="/schedulePage" :disabled="true" >click for schedule</ULink>
       </div>
       <div class="homepage-schedule-cards">
         <UCarousel
