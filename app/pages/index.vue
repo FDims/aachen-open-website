@@ -4,6 +4,7 @@ import MatchCard from "~/component/matchCard/matchCard.vue";
 import "~/assets/styles/pages/index.scss";
 
 const time = new Date();
+const eventTime = new Date(2025, 12, 6);
 const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.time.getDate() == time.getDate());
 </script>
 
@@ -11,7 +12,7 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
   <div class="homepage">
     <div class="homepage-description">
       <div class="homepage-description-image">
-        <img src="~/assets/images/aachen-open-logo.png" alt="Aachen Open Logo" class="homepage-description-image-logo"/>
+        <img src="~/assets/images/aachen-open-logo.svg" alt="Aachen Open Logo" class="homepage-description-image-logo"/>
       </div>
       <div class="homepage-description-text">
         <h5>Aachen Open 2025</h5>
@@ -42,6 +43,7 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
       </div>
       <div class="homepage-schedule-cards">
         <UCarousel
+            v-if="time >= eventTime"
           v-slot ="{item}"
           class="homepage-schedule-carousel"
           dots
@@ -58,6 +60,11 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.t
           >
           <match-card :schedule="item" class="homepage-schedule-card"/>
         </UCarousel>
+        <div v-else class="homepage-schedule-coming-soon">
+          <h1>
+            Coming Soon!
+          </h1>
+        </div>
       </div>
     </div>
   </div>

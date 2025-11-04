@@ -32,7 +32,7 @@ const items = computed<NavigationMenuItem[]>(() => [
   >
     <template #left>
       <img
-        src="~/assets/images/aachen-open-logo.png"
+        src="~/assets/images/aachen-open-logo.svg"
         alt="logo"
         class="header-logo size-15"
       />
