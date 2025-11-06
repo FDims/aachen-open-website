@@ -17,8 +17,6 @@ interface BracketData {
   final: Schedule[];
 }
 
-console.log(props.matchSchedules)
-
 const bracketData: BracketData ={
   quarterFinals: props.matchSchedules.filter((match) => match.type == "quarter"),
   semiFinals: props.matchSchedules.filter((match) => match.type == "semi"),
