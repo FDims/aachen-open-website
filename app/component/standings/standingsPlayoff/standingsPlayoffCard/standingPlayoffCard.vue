@@ -1,26 +1,11 @@
 <script setup lang="ts">
-import type {Schedule, Sport} from "~~/types";
+import type {Schedule} from "~~/types";
 import "./standingPlayoffCard.scss";
 import { getSportName } from "~~/utils/getSportName";
 
 defineProps<{
   match: Schedule;
 }>()
-
-const sportName = (sport: Sport) : string => {
-  switch (sport) {
-    case "badmintonMixedDouble":
-      return "Badminton Mixed Double";
-    case "badmintonMenDouble":
-      return "Badminton Men Double";
-    case "futsal":
-      return "Futsal";
-    case "volleyball":
-      return "Volleyball";
-    case "basketball":
-      return "Basketball";
-  }
-}
 </script>
 
 <template>
