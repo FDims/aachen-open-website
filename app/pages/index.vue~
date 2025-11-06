@@ -43,7 +43,7 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.a
       </div>
       <div class="homepage-schedule-cards">
         <UCarousel
-            v-if="time >= eventTime"
+            v-if="time <= eventTime"
           v-slot ="{item}"
           class="homepage-schedule-carousel"
           dots

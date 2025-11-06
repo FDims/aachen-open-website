@@ -1,10 +1,25 @@
 <script setup lang="ts">
-import type {Schedule} from "~~/types";
+import type {Schedule, Sport} from "~~/types";
 import "./standingPlayoffCard.scss";
 
 defineProps<{
   match: Schedule;
 }>()
+
+const sportName = (sport: Sport) : string => {
+  switch (sport) {
+    case "badmintonMixedDouble":
+      return "Badminton Mixed Double";
+    case "badmintonMenDouble":
+      return "Badminton Men Double";
+    case "futsal":
+      return "Futsal";
+    case "volleyball":
+      return "Volleyball";
+    case "basketball":
+      return "Basketball";
+  }
+}
 </script>
 
 <template>
@@ -12,7 +27,7 @@ defineProps<{
     <div class="playoff-card__badge-wrapper">
       <UBadge
         :color="match.type == 'final' ? 'gray' : 'green'"
-        :label="match.sport + ' ' + match.type"
+        :label="sportName(match.sport) + ' ' + match.type"
         class="playoff-card__badge"
         variant="subtle"
         size="small"

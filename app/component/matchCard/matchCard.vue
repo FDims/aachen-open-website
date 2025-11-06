@@ -13,7 +13,7 @@ const props = defineProps<{
 const logo = () => {
   if (props.schedule.sport === "futsal")
     return futsalLogo;
-  if (props.schedule.sport === "badminton")
+  if (props.schedule.sport.startsWith("badminton"))
     return badmintonLogo
   if (props.schedule.sport === "volleyball")
     return volleyballLogo
@@ -25,7 +25,7 @@ const status = () => {
   const now = new Date();
   if(props.schedule.finished)
     return "finished"
-  else if(!props.schedule.finished && props.schedule.time <= now)
+  else if(!props.schedule.finished && props.schedule.actualTime <= now)
     return "live"
   else return "upcoming"
 }
@@ -52,7 +52,7 @@ const status = () => {
         <div
             :class="'match-card-footer-circle -' + status()"
         ></div>
-        <p :class="'match-card-footer-status -' + status()"> {{status() == "upcoming" ? "scheduled " + props.schedule.time.toLocaleTimeString() : status()}}</p>
+        <p :class="'match-card-footer-status -' + status()"> {{status() == "upcoming" ? props.schedule.actualTime.toLocaleTimeString() : status()}}</p>
       </div>
   </div>
 </template>

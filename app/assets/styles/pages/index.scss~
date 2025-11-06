@@ -100,7 +100,7 @@
             padding: 40px 0 10px 0;
 
             .homepage-schedule-coming-soon{
-                height: 15vh;
+                height: 20vh;
                 font-size: 30px;
                 font-weight: bolder;
                 text-align: center;

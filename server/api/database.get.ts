@@ -29,7 +29,8 @@ export default cachedEventHandler(async (event) => {
         "VolleyballTeams!A:H",
         "Schedule!A:J",
         "FutsalTeams!A:L",
-        "BadmintonTeams!A:H",
+        "BadmintonMixedDouble!A:H",
+        "BadmintonMenDouble!A:H",
         "BasketballTeams!A:H"
     ];
 

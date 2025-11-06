@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import StandingGroup from "../standingsGroup/standingGroup.vue";
 import type {Group, Schedule} from "~~/types"
+import "./standingMain.scss"
 
-const badmintonTeams = inject<Team[]>("badmintonTeams");
+const badmintonMenDoubleTeams = inject<Team[]>("badmintonMenDouble");
+const badmintonMixedDoubleTeams = inject<Team[]>("badmintonMixedDouble");
 const basketballTeams = inject<Team[]>("basketballTeams");
 const futsalTeams = inject<Team[]>("futsalTeams");
 const volleyballTeams = inject<Team[]>("volleyballTeams");
@@ -11,8 +13,12 @@ const schedules = inject<Schedule[]>("schedules");
 
 const items = [
   {
-    label: "Badminton",
-    slot: 'badminton',
+    label: "Men Double",
+    slot: 'badmintonMenDobule',
+  },
+  {
+    label: "Mixed Double",
+    slot: 'badmintonMixedDouble',
   },
   {
     label: "Basketball",
@@ -28,28 +34,41 @@ const items = [
   },
 ];
 
-const badmintonGroups: Group[] = [
+const badmintonMixedDobuleGroups: Group[] = [
   {
     name: "A",
-    sport: "badminton",
-    teams: badmintonTeams.filter((team) => team.group == "A")
+    sport: "badmintonMixedDouble",
+    teams: badmintonMixedDoubleTeams.filter((team) => team.group == "A")
   },
   {
     name: "B",
-    sport: "badminton",
-    teams: badmintonTeams.filter((team) => team.group == "B")
+    sport: "badmintonMixedDouble",
+    teams: badmintonMixedDoubleTeams.filter((team) => team.group == "B")
+  },
+  ]
+
+const badmintonMenDobuleGroups: Group[] = [
+  {
+    name: "A",
+    sport: "badmintonMenDouble",
+    teams: badmintonMenDoubleTeams.filter((team) => team.group == "A")
+  },
+  {
+    name: "B",
+    sport: "badmintonMenDouble",
+    teams: badmintonMenDoubleTeams.filter((team) => team.group == "B")
   },
   {
     name: "C",
-    sport: "badminton",
-    teams: badmintonTeams.filter((team) => team.group == "C")
+    sport: "badmintonMenDouble",
+    teams: badmintonMenDoubleTeams.filter((team) => team.group == "C")
   },
   {
     name: "D",
-    sport: "badminton",
-    teams: badmintonTeams.filter((team) => team.group == "D")
+    sport: "badmintonMenDouble",
+    teams: badmintonMenDoubleTeams.filter((team) => team.group == "D")
   }
-  ]
+]
 
 
 const futsalGroups: Group[] = [
@@ -111,20 +130,31 @@ const basketballGroups: Group[] = [
   },
 ]
 
-const badmintonPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "badminton" && schedule.type != "group");
+const badmintonMenDobulePlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "badmintonMenDouble" && schedule.type != "group");
+const badmintonMixedDobulePlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "badmintonMixedDouble" && schedule.type != "group");
 const basketballPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "basketball" && schedule.type != "group");
 const futsalPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "futsal" && schedule.type != "group");
 const voleyballPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "volleyball" && schedule.type != "group");
-
 </script>
 
 <template>
   <div
     class="standing-main-wrapper"
   >
-    <UTabs :items="items" color="neutral" size="xl">
-      <template #badminton>
-        <standing-group :groups="badmintonGroups" :playoff="badmintonPlayoff" bracket="quarter"/>
+    <UTabs
+        :items="items"
+        color="neutral"
+        size="xl"
+        class="standing-main-tabs"
+        :ui="{
+          label: 'text-sm font-medium whitespace-normal text-center text-clip',
+        }"
+    >
+      <template #badmintonMenDobule>
+        <standing-group :groups="badmintonMenDobuleGroups" :playoff="badmintonMenDobulePlayoff" bracket="quarter"/>
+      </template>
+      <template #badmintonMixedDouble>
+        <standing-group :groups="badmintonMixedDobuleGroups" :playoff="badmintonMixedDobulePlayoff" bracket="semi"/>
       </template>
       <template #basketball>
         <standing-group :groups="basketballGroups" :playoff="basketballPlayoff" bracket="semi"/>

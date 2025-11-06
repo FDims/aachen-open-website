@@ -1,0 +1,15 @@
+.schedule-table {
+  .schedule-table-tabs {
+    .schedule-table-title{
+      text-align: center;
+      font-weight: bold;
+      font-size: 3vh;
+    }
+    .standings-table-data{
+      margin: auto 7vw;
+      border: solid 1px white;
+      border-radius: 10px;
+      background-color: rgba(0 ,36 ,81 , 0.8);
+    }
+  }
+}
