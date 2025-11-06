@@ -91,7 +91,7 @@ function getCurrentScheduleIndex (): number {
           >
           <match-card :schedule="item" class="homepage-schedule-card"/>
         </UCarousel>
-        <div v-else class="homepage-schedule-coming-soon">
+        <div class="homepage-schedule-coming-soon">
           <h1>
             Coming Soon!
           </h1>
