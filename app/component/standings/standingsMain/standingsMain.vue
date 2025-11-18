@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import StandingGroup from "../standingsGroup/standingGroup.vue";
-import type {Group, Schedule} from "~~/types"
+import type {Group, Schedule, Sport, Team} from "~~/types"
 import "./standingMain.scss"
 
 const badmintonMenDoubleTeams = inject<Team[]>("badmintonMenDouble");
@@ -13,11 +13,11 @@ const schedules = inject<Schedule[]>("schedules");
 
 const items = [
   {
-    label: "Men Double",
+    label: "Men's Doubles",
     slot: 'badmintonMenDobule',
   },
   {
-    label: "Mixed Double",
+    label: "Mixed Doubles",
     slot: 'badmintonMixedDouble',
   },
   {
@@ -34,107 +34,27 @@ const items = [
   },
 ];
 
-const badmintonMixedDobuleGroups: Group[] = [
-  {
-    name: "A",
-    sport: "badmintonMixedDouble",
-    teams: badmintonMixedDoubleTeams.filter((team) => team.group == "A")
-  },
-  {
-    name: "B",
-    sport: "badmintonMixedDouble",
-    teams: badmintonMixedDoubleTeams.filter((team) => team.group == "B")
-  },
-  ]
-
-const badmintonMenDobuleGroups: Group[] = [
-  {
-    name: "A",
-    sport: "badmintonMenDouble",
-    teams: badmintonMenDoubleTeams.filter((team) => team.group == "A")
-  },
-  {
-    name: "B",
-    sport: "badmintonMenDouble",
-    teams: badmintonMenDoubleTeams.filter((team) => team.group == "B")
-  },
-  {
-    name: "C",
-    sport: "badmintonMenDouble",
-    teams: badmintonMenDoubleTeams.filter((team) => team.group == "C")
-  },
-  {
-    name: "D",
-    sport: "badmintonMenDouble",
-    teams: badmintonMenDoubleTeams.filter((team) => team.group == "D")
+const getSportGroup = (teams: Team[]) : Group[] => {
+  const groups: Group[] = [];
+  for (const team of teams) {
+    const group: Group = groups.find((group) => group.name === team.group)
+    if (!group) {
+      groups.push({
+        name: team.group,
+        sport: team.sport,
+        teams: [team],
+      })
+    } else {
+      group.teams.push(team);
+    }
   }
-]
 
+  return groups;
+}
 
-const futsalGroups: Group[] = [
-  {
-    name: "A",
-    sport: "futsal",
-    teams: futsalTeams.filter((team) => team.group == "A")
-  },
-  {
-    name: "B",
-    sport: "futsal",
-    teams: futsalTeams.filter((team) => team.group == "B")
-  },
-  {
-    name: "C",
-    sport: "futsal",
-    teams: futsalTeams.filter((team) => team.group == "C")
-  },
-  {
-    name: "D",
-    sport: "futsal",
-    teams: futsalTeams.filter((team) => team.group == "D")
-  }
-]
-
-const volleyballGroups: Group[] = [
-  {
-    name: "A",
-    sport: "volleyball",
-    teams: volleyballTeams.filter((team) => team.group == "A")
-  },
-  {
-    name: "B",
-    sport: "volleyball",
-    teams: volleyballTeams.filter((team) => team.group == "B")
-  },
-  {
-    name: "C",
-    sport: "volleyball",
-    teams: volleyballTeams.filter((team) => team.group == "C")
-  },
-  {
-    name: "D",
-    sport: "volleyball",
-    teams: volleyballTeams.filter((team) => team.group == "D")
-  }
-]
-
-const basketballGroups: Group[] = [
-  {
-    name: "A",
-    sport: "basketball",
-    teams: basketballTeams.filter((team) => team.group == "A")
-  },
-  {
-    name: "B",
-    sport: "basketball",
-    teams: basketballTeams.filter((team) => team.group == "B")
-  },
-]
-
-const badmintonMenDobulePlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "badmintonMenDouble" && schedule.type != "group");
-const badmintonMixedDobulePlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "badmintonMixedDouble" && schedule.type != "group");
-const basketballPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "basketball" && schedule.type != "group");
-const futsalPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "futsal" && schedule.type != "group");
-const voleyballPlayoff: Schedule[] = schedules.filter((schedule) => schedule.sport == "volleyball" && schedule.type != "group");
+const getPlayoffTeams = (sportType: Sport): Schedule[] => {
+  return schedules.filter((schedule) => schedule.sport == sportType && schedule.type != "group");
+}
 </script>
 
 <template>
@@ -151,19 +71,19 @@ const voleyballPlayoff: Schedule[] = schedules.filter((schedule) => schedule.spo
         }"
     >
       <template #badmintonMenDobule>
-        <standing-group :groups="badmintonMenDobuleGroups" :playoff="badmintonMenDobulePlayoff" bracket="quarter"/>
+        <standing-group :groups="getSportGroup(badmintonMenDoubleTeams)" :playoff="getPlayoffTeams('badmintonMenDouble')" bracket="quarter"/>
       </template>
       <template #badmintonMixedDouble>
-        <standing-group :groups="badmintonMixedDobuleGroups" :playoff="badmintonMixedDobulePlayoff" bracket="semi"/>
+        <standing-group :groups="getSportGroup(badmintonMixedDoubleTeams)" :playoff="getPlayoffTeams(badmintonMixedDoubleTeams)" bracket="quarter"/>
       </template>
       <template #basketball>
-        <standing-group :groups="basketballGroups" :playoff="basketballPlayoff" bracket="semi"/>
+        <standing-group :groups="getSportGroup(basketballTeams)" :playoff="getPlayoffTeams('basketball')" bracket="semi"/>
       </template>
       <template #volleyball>
-        <standing-group :groups="volleyballGroups" :playoff="voleyballPlayoff" bracket="quarter"/>
+        <standing-group :groups="getSportGroup(volleyballTeams)" :playoff="getPlayoffTeams('volleyball')" bracket="semi"/>
       </template>
       <template #futsal>
-        <standing-group :groups="futsalGroups" :playoff="futsalPlayoff" bracket="quarter"/>
+        <standing-group :groups="getSportGroup(futsalTeams)" :playoff="getPlayoffTeams('futsal')" bracket="semi"/>
       </template>
     </UTabs>
   </div>

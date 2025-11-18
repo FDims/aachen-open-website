@@ -19,7 +19,7 @@ import type {Group, Team} from "~~/types";
       return([
         {
           accessorKey: 'index',
-          header: "Rank",
+          header: ' ',
           cell: ({ row }) => {
             return row.index + 1;
           }

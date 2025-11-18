@@ -7,5 +7,11 @@
   }
   .standings-table-data{
     font-size: 1.5vw;
+    thead {
+      border: none;
+    }
+    th {
+      border-bottom: 1px solid lightgray;
+    }
   }
 }
