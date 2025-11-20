@@ -1,25 +1,23 @@
 <script setup lang="ts">
-import type { Ref } from 'vue'
 import type { Schedule } from '~~/types'
-import { getSportName } from '~~/utils/getSportName'
+import "../assets/styles/pages/schedules.scss"
+import badmintonLogo from '../assets/images/badminton_logo.svg'
+import volleyballLogo from '../assets/images/volleyball_logo.svg'
+import futsalLogo from '../assets/images/football_logo.svg'
+import basketballLogo from '../assets/images/basketball_logo.svg'
 
 const SPORTS = [
-  { key: 'volleyball', label: 'Volleyball', icon: 'i-material-symbols:sports-volleyball' },
-  { key: 'basketball', label: 'Basketball', icon: 'i-material-symbols:sports-basketball' },
-  { key: 'futsal',     label: 'Futsal',     icon: 'i-material-symbols:sports-soccer' },
-  { key: 'badminton',  label: 'Badminton',  icon: 'i-material-symbols:sports-badminton' }
+  { key: 'volleyball', label: 'Volleyball', icon: volleyballLogo },
+  { key: 'basketball', label: 'Basketball', icon: basketballLogo },
+  { key: 'futsal',     label: 'Futsal',     icon: futsalLogo },
+  { key: 'badmintonMixedDouble',  label: 'Mixed Doubles',  icon: badmintonLogo },
+  { key: 'badmintonMenDouble',  label: "Men's Doubles",  icon: badmintonLogo }
 ] as const
 type SportKey = typeof SPORTS[number]['key']
 type DayKey = 'all' | 'day1' | 'day2'
 
-const schedules = inject<Ref<Schedule[]>>('schedules', ref([]))
+const schedules = inject<Schedule[]>('schedules')
 
-const norm = (s?: string) => String(s ?? '').toLowerCase().replace(/\s+/g, '')
-function sportKey(row: any) {
-  const raw = row?.sport
-  const name = typeof raw === 'number' ? getSportName(raw) : String(raw ?? '')
-  return norm(name)
-}
 function rowDate(row: any): Date | null {
   const d = row?.scheduled ?? row?.actualTime ?? row?.date ?? row?.time
   if (!d) return null
@@ -48,30 +46,82 @@ function clearSports() { selectedSports.value = new Set() }
 
 const selectedDay = ref<DayKey>('all')
 
-const rows = computed(() => {
-  let all = schedules.value ?? []
+function rows () : Schedule[]  {
+  let all = schedules ?? []
   if (selectedDay.value === 'day1') all = all.filter(r => isSameDay(rowDate(r), DAY1))
   else if (selectedDay.value === 'day2') all = all.filter(r => isSameDay(rowDate(r), DAY2))
   if (selectedSports.value.size > 0) {
-    all = all.filter(r => selectedSports.value.has(sportKey(r) as SportKey))
+    all = all.filter(r => selectedSports.value.has(r.sport))
   }
-  return all
-})
+  return all.slice().sort((a, b) => {
+    const dateA = rowDate(a);
+    const dateB = rowDate(b);
+
+    // Handle null dates (push them to the end, or start depending on preference)
+    if (!dateA && !dateB) return 0;
+    if (!dateA) return 1;
+    if (!dateB) return -1;
+
+    // Compare the timestamps
+    return dateA.getTime() - dateB.getTime();
+  });
+}
 
 const countsBySport = computed(() => {
   const c: Record<string, number> = {}
-  for (const r of schedules.value ?? []) {
-    const k = sportKey(r); c[k] = (c[k] ?? 0) + 1
+  for (const r of schedules ?? []) {
+    const k = r.sport; c[k] = (c[k] ?? 0) + 1
   }
   return c
 })
 
-const columns = [
-  { key: 'sport',      label: 'Sport' },
-  { key: 'teamA',      label: 'Team1' },
-  { key: 'teamB',      label: 'Team2' },
-  { key: 'scheduled',  label: 'Scheduled' },
-  { key: 'actualTime', label: 'Actual Time' },
+const column : TableColumn<Schedule>[] = [
+  {
+    accessorKey: 'scheduled',
+    header: ' Scheduled',
+    cell: ({ row }) => {
+      return new Date(row.getValue('scheduled')).toLocaleTimeString('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+  },
+  {
+    accessorKey: 'teamA',
+    header: 'Team1',
+    cell: ({ row }) => {
+      return row.getValue("teamA")? row.getValue("teamA").name : "TBD";
+    }
+  },
+  {
+    accessorKey: 'teamB',
+    header: 'Team2',
+    cell: ({ row }) => {
+      return row.getValue("teamB")? row.getValue("teamB").name : "TBD";
+    }
+  },
+  {
+    accessorKey: 'scoreA',
+    header: 'Score1',
+  },
+  {
+    accessorKey: 'scoreB',
+    header: 'Score2',
+  },
+  {
+    accessorKey: 'sport',
+    header: 'Sport',
+  },
+  {
+    accessorKey: 'actualTime',
+    header: 'Actual Time',
+    cell: ({ row }) => {
+      return new Date(row.getValue('actualTime')).toLocaleTimeString('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+  },
 ]
 
 // brand styles (white text)
@@ -84,7 +134,7 @@ const badgeSoftBlue  = '!bg-[color-mix(in_oklab,var(--blue1)_15%,transparent)] !
 <template>
   <!-- make all text white by default -->
   <div class="p-6 text-white">
-    <h1 class="text-2xl font-bold mb-4">Schedule</h1>
+    <h1 class="text-2xl font-bold mb-4 text-center">Schedule</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4">
       <!-- LEFT: multi-select sport filter -->
@@ -114,7 +164,7 @@ const badgeSoftBlue  = '!bg-[color-mix(in_oklab,var(--blue1)_15%,transparent)] !
               @click="toggleSport(s.key)"
               :aria-pressed="selectedSports.has(s.key)"
             >
-              <UIcon :name="s.icon" class="mr-2" />
+              <img :src="s.icon" alt="Sport" class="sport-icon" />
               <span class="flex-1"> {{ s.label }} </span>
               <UBadge color="gray" variant="soft" :class="badgeSoftBlue">
                 {{ countsBySport[s.key] ?? 0 }}
@@ -132,7 +182,7 @@ const badgeSoftBlue  = '!bg-[color-mix(in_oklab,var(--blue1)_15%,transparent)] !
               <UIcon name="i-lucide-list-filter" class="mr-2" />
               <span class="flex-1">All sports</span>
               <UBadge color="gray" variant="soft" :class="badgeSoftBlue">
-                {{ schedules.value?.length ?? 0 }}
+                {{ schedules.length ?? 0 }}
               </UBadge>
             </UButton>
           </div>
@@ -152,7 +202,7 @@ const badgeSoftBlue  = '!bg-[color-mix(in_oklab,var(--blue1)_15%,transparent)] !
               </span>
             </h2>
             <UBadge color="gray" :class="badgeSolidBlue">
-              {{ rows.length }} matches
+              {{ rows().length }} matches
             </UBadge>
           </div>
 
@@ -187,14 +237,15 @@ const badgeSoftBlue  = '!bg-[color-mix(in_oklab,var(--blue1)_15%,transparent)] !
           </div>
         </div>
 
-        <UCard v-if="rows.length===0" class="text-white">
+        <UCard v-if="rows().length===0" class="text-white">
           <div class="py-10 text-center">No matches for this filter.</div>
         </UCard>
 
         <UTable
           v-else
-          :rows="rows"
-          :columns="columns"
+          :data="rows()"
+          :columns="column"
+          class="rounded-lg bg-elevated/50 ring ring-default"
           :ui="{
             th: 'text-white',
             td: 'text-white',
@@ -202,19 +253,13 @@ const badgeSoftBlue  = '!bg-[color-mix(in_oklab,var(--blue1)_15%,transparent)] !
             base: 'divide-y divide-white/10'
           }"
         >
-          <template #sport-data="{ row }">
+          <template #sport-cell="{ row }">
             <div class="flex items-center gap-2">
-              <UIcon :name="({ volleyball:'i-material-symbols:sports-volleyball',
-                               basketball:'i-material-symbols:sports-basketball',
-                               futsal:'i-material-symbols:sports-soccer',
-                               badminton:'i-material-symbols:sports-badminton' } as any)[sportKey(row)] || 'i-lucide-calendar'" />
-              <span class="capitalize">{{ sportKey(row) }}</span>
+              <img :src="SPORTS.at(row.original.origin).icon" alt="Sport" class="sport-icon" />
+
+              <span class="capitalize">{{ row.original.sport }}</span>
             </div>
           </template>
-          <template #teamA-data="{ row }">{{ row.teamA?.name ?? row.teamA ?? 'TBD' }}</template>
-          <template #teamB-data="{ row }">{{ row.teamB?.name ?? row.teamB ?? 'TBD' }}</template>
-          <template #scheduled-data="{ row }">{{ row.scheduled ? new Date(row.scheduled).toLocaleTimeString() : '—' }}</template>
-          <template #actualTime-data="{ row }">{{ row.actualTime ? new Date(row.actualTime).toLocaleTimeString() : '—' }}</template>
         </UTable>
       </div>
     </div>
