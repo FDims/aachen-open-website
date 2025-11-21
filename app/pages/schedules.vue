@@ -81,6 +81,8 @@ const column : TableColumn<Schedule>[] = [
     header: ' Scheduled',
     cell: ({ row }) => {
       return new Date(row.getValue('scheduled')).toLocaleTimeString('en-GB', {
+        day : '2-digit',
+        month: '2-digit',
         hour: '2-digit',
         minute: '2-digit'
       });
@@ -117,6 +119,8 @@ const column : TableColumn<Schedule>[] = [
     header: 'Actual Time',
     cell: ({ row }) => {
       return new Date(row.getValue('actualTime')).toLocaleTimeString('en-GB', {
+        day : '2-digit',
+        month: '2-digit',
         hour: '2-digit',
         minute: '2-digit'
       });
