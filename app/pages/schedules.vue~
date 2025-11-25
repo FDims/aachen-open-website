@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { Schedule } from '~~/types'
 import "../assets/styles/pages/schedules.scss"
-import {badmintonLogo, basketballLogo, futsalLogo, volleyballLogo} from "~/assets/images";
+import badmintonLogo from '../assets/images/badminton_logo.svg'
+import volleyballLogo from '../assets/images/volleyball_logo.svg'
+import futsalLogo from '../assets/images/football_logo.svg'
+import basketballLogo from '../assets/images/basketball_logo.svg'
 
 const SPORTS = [
   { key: 'volleyball', label: 'Volleyball', icon: volleyballLogo },
