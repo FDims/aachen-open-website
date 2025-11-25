@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Schedule } from '~~/types'
+import type {Schedule, Sport} from '~~/types'
 import "../assets/styles/pages/schedules.scss"
 import {badmintonLogo, basketballLogo, futsalLogo, volleyballLogo} from "~/assets/images";
 
@@ -14,6 +14,16 @@ type SportKey = typeof SPORTS[number]['key']
 type DayKey = 'all' | 'day1' | 'day2'
 
 const schedules = inject<Schedule[]>('schedules')
+
+const setIcon = (sport: Sport) => {
+  if(sport === 'futsal')
+    return futsalLogo;
+  if(sport === 'basketball')
+    return basketballLogo;
+  if(sport === 'volleyball')
+    return volleyballLogo;
+  return badmintonLogo;
+}
 
 function rowDate(row: any): Date | null {
   const d = row?.scheduled ?? row?.actualTime ?? row?.date ?? row?.time
@@ -256,7 +266,7 @@ const badgeSoftBlue  = '!bg-[color-mix(in_oklab,var(--blue1)_15%,transparent)] !
         >
           <template #sport-cell="{ row }">
             <div class="flex items-center gap-2">
-              <img :src="SPORTS.at(row.original.origin).icon" alt="Sport" class="sport-icon" />
+              <img :src="setIcon(row.original.sport)" alt="Sport" class="sport-icon" />
 
               <span class="capitalize">{{ row.original.sport }}</span>
             </div>
