@@ -2,7 +2,7 @@
 import type {Schedule} from "~~/types";
 import "./matchCard.scss";
 
-import { getSportName } from "../../../utils/getSportName";
+import { getSportName } from "~~/utils/getSportName";
 import {badmintonLogo, basketballLogo, futsalLogo, volleyballLogo} from "~/assets/images";
 
 const props = defineProps<{

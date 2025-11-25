@@ -6,6 +6,14 @@ import "~/assets/styles/pages/index.scss";
 const time = new Date();
 const eventTime = new Date(2025, 11, 6);
 const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.actualTime.getDate() == time.getDate());
+schedules?.sort((a,b) => a.id - b.id);
+
+const getCurrentScheduleIndex = (): number => {
+  const scheduleList = schedules?.filter((schedule) => !schedule.finished && schedule.scheduled <= time)
+  if (scheduleList)
+    return scheduleList[0].id;
+  return 0;
+}
 </script>
 
 <template>
@@ -17,7 +25,7 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.a
       <div class="homepage-description-text">
         <h5>Aachen Open 2025</h5>
         <h3>Tri-Nation League</h3>
-        <p> A sport league organized by Perhimpunan Pelajar Indonesia Aachen (Indonesian Student Association in Aachen),
+        <p> A sport league organized by Perhimpunan Pelajar Indonesia Aachen (Indonesian Students Association in Aachen),
           Malaysisch-Aachener Klub (MAK) and Verein der chinesichen
           Wissenschaftler und Studenten in Aachen (VCWSA). </p>
       </div>
@@ -44,16 +52,17 @@ const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.a
       <div class="homepage-schedule-cards">
         <UCarousel
             v-if="time >= eventTime"
-          v-slot ="{item}"
-          class="homepage-schedule-carousel"
-          arrows
-          :items = "schedules"
-          :ui = "{
-            item: 'basis-full sm:basis-1/2 md:basis-1/3 ',
-            container: 'transition-[height]',
-            controls: 'absolute -top-4 inset-x-30',
-            arrows: 'hidden sm:flex'
-            }"
+            v-slot ="{item}"
+            class="homepage-schedule-carousel"
+            arrows
+            :items = "schedules"
+            :ui = "{
+              item: 'basis-full sm:basis-1/2 md:basis-1/3 ',
+              container: 'transition-[height]',
+              controls: 'absolute -top-4 inset-x-30',
+              arrows: 'hidden sm:flex'
+              }"
+            :start-index="getCurrentScheduleIndex()"
           >
           <match-card :schedule="item" class="homepage-schedule-card"/>
         </UCarousel>

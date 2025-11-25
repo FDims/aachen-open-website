@@ -31,13 +31,13 @@
             font-style: italic;
 
           }
-          .standing-playoff__quarter-final__card, .standing-playoff__final__card {
+          .standing-playoff__quarter-final__card, .standing-playoff__final__card, .standing-playoff__semi-final__card {
             margin: 7px 5px;
             width: 100%;
           }
 
           .standing-playoff__semi-final__card {
-            margin: 30px 5px;
+            margin: 7px 5px 60px 5px;
             width: 100%;
           }
         }
@@ -50,7 +50,7 @@
           }
 
           .standing-playoff__winner__card {
-            margin: 30px 5px;
+            margin: 7px 5px;
             min-width: 250px;
             .standing-playoff__winner__card__wrapper {
               .standing-playoff__winner__team {

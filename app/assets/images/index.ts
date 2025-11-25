@@ -6,11 +6,13 @@ export {default as basketballLogo} from "./basketball_logo.svg";
 export {default as dateLogo} from "./date_logo.svg";
 
 //org logo
-export {default as ppiLogo} from "./ppi_logo.svg";
+export {default as ppiALogo} from "./ppi_logo.svg";
 export {default as makLogo} from "./mak_logo.svg";
 export {default as vcwsaLogo} from "./vcwsa_logo.svg";
 export {default as instagramIcon} from "./instagram_icon.svg";
-export {default as locationIcon} from "./location_logo.svg";
+export {default as kbriLogo} from "./kbrilogo.jpg";
+export {default as ppiJLogo} from "./ppijlogo.png";
+export {default as wartegLogo} from "./warteglogo.png";
 
 //merch bundle pics
 export {default as bundle1} from "./merch/bundle/bundle1.jpg";

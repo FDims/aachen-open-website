@@ -1,27 +1,17 @@
 <script setup lang="ts">
 import { defineComponent, h } from 'vue'
+import {kbriLogo, makLogo, ppiALogo, ppiJLogo, vcwsaLogo, wartegLogo} from "~/assets/images";
 
 // Types
 type Org = { name: string; role?: string; logo?: string; href?: string }
 type Sponsor = { name: string; logo?: string; href?: string }
-
-// IMPORT LOGO SPONSOR
-// Pastikan file ini ada di: app/assets/images/sponsors/KBRIlogo.jpeg
-import kbriLogo from '~/assets/images/kbrilogo.jpg'
-import ppijLogo from '~/assets/images/ppijlogo.png'
-import wartegLogo from '~/assets/images/warteglogo.png'
-
-//IMPORT LOGO ORGANIZERS
-import ppiaLogo from '~/assets/images/ppi_logo.svg'
-import makLogo from '~/assets/images/mak_logo.svg'
-import vcwsaLogo from '~/assets/images/vcwsa_logo.svg'
 
 // ORGANIZERS (silakan edit sesuai kebutuhan)
 const organizers: Org[] = [
   {
     name: 'PPI Aachen',
     role: 'Main Organizer',
-    logo:  ppiaLogo, 
+    logo:  ppiALogo,
     href: 'https://ppiaachen.de'
   },
 
@@ -50,7 +40,7 @@ const sponsors: Sponsor[] = [
   },
   {
     name: 'PPIJ (Perhimpunan Pelajar Indonesia di Jerman)',
-    logo: ppijLogo,
+    logo: ppiJLogo,
     href: 'https://ppijerman.org/'
   },
 
@@ -137,7 +127,7 @@ const Logo = defineComponent({
         <div
           v-for="org in organizers"
           :key="org.name"
-          class="rounded-xl p-4 ring-1 ring-white/10 bg-black/10 flex items-center gap-4"
+          class="rounded-xl p-4 ring-1 ring-white/10 bg-black/10 flex items-center gap-4 flex-col justify-center text-center"
         >
           <Logo :src="org.logo" :alt="org.name" />
           <div class="min-w-0">
@@ -174,10 +164,10 @@ const Logo = defineComponent({
             :key="sp.name"
             :to="sp.href || '#'"
             target="_blank"
-            class="rounded-xl p-4 ring-1 ring-white/10 bg-black/10 flex items-center gap-4 hover:bg-white/5"
+            class="rounded-xl p-4 ring-1 ring-white/10 bg-black/10 flex items-center gap-4 hover:bg-white/5 flex-col"
           >
             <Logo :src="sp.logo" :alt="sp.name" />
-            <div class="font-medium truncate">
+            <div class="font-medium text-wrap text-center">
               {{ sp.name }}
             </div>
           </ULink>
