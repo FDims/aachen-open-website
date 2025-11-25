@@ -23,8 +23,8 @@ const bracketData: BracketData ={
 
 // --- Helper function to get winner name ---
 const getWinner = (match: Schedule): string => {
-  if (match.winnerTeam && match.teamA && match.winnerTeam === match.teamA.name) return match.teamA.name;
-  if (match.winnerTeam && match.teamB && match.winnerTeam === match.teamB.name) return match.teamB.name;
+  if (match.finished && match.teamA && match.winnerTeam === match.teamA.id) return match.teamA.name;
+  if (match.finished && match.teamB && match.winnerTeam === match.teamB.id) return match.teamB.name;
   return 'TBD';
 };
 </script>
