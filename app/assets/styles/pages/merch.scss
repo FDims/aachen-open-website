@@ -1,0 +1,140 @@
+.merch-text {
+  margin: auto 5vw;
+  border-bottom: 2px solid var(--cream);
+  .merch-title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 8vh;
+    @media (max-width: 940px) {
+      font-size: 8vw;
+    }
+  }
+  .merch-subtitle{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+
+.bundle-wrapper{
+  margin: 10px 5vw;
+  .bundle-buy-button{
+    margin: auto;
+  }
+
+  .bundle-title{
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+  }
+
+  .bundle-subtitle{
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+  }
+
+  .bundle-prices {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .bundle-price{
+      font-weight: bold;
+      display: inline-flex;
+      margin: 0 5px;
+      color: var(--cream);
+      font-size: 25px;
+    }
+
+    .bundle-price-original{
+      text-decoration: line-through;
+      display: inline-flex;
+      margin: 0 5px;
+      color: var(--red1);
+      font-size: 25px;
+    }
+  }
+
+
+  .bundle-carousel{
+    .bundle-pictures{
+      height: 30vh;
+      margin: auto;
+    }
+  }
+
+}
+
+.merch-individual{
+  margin: 10px 5vw;
+  display: flex;
+  flex-direction: row;
+
+  .merch-jersey, .merch-tshirt{
+    flex: 1;
+    justify-self: center;
+    .jersey-carousel, .tshirt-carousel{
+      margin: auto;
+      @media (min-width: 940px) {
+        width: 70%;
+      }
+      .jersey-pictures, .tshirt-pictures{
+        height: 30vh;
+        margin: auto;
+      }
+    }
+
+    .jersey-title, .tshirt-title{
+      font-weight: bold;
+      text-align: center;
+      margin: auto;
+    }
+    .jersey-subtitle, .tshirt-subtitle{
+      font-weight: bold;
+      text-align: center;
+      margin: auto;
+    }
+    .jersey-prices, .tshirt-prices{
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      .jersey-price, .tshirt-price{
+        font-weight: bold;
+        display: inline-flex;
+        margin: 0 5px;
+        color: var(--cream);
+        font-size: 25px;
+      }
+      .jersey-price-original, .tshirt-price-original{
+        text-decoration: line-through;
+        display: inline-flex;
+        margin: 0 5px;
+        color: var(--red1);
+        font-size: 25px;
+      }
+    }
+    .jersey-buy-button, .tshirt-buy-button{
+      margin: auto;
+    }
+  }
+  .merch-jersey{
+    margin-right: 10px;
+  }
+  .merch-tshirt{
+    margin-left: 10px;
+  }
+
+
+}
+
+@media (max-width: 940px) {
+  .merch-individual{
+    flex-direction: column;
+  }
+  .merch-jersey, .merch-tshirt{
+    margin: 10px auto;
+  }
+
+}
