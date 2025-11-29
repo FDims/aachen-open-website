@@ -5,8 +5,9 @@ import "~/assets/styles/pages/index.scss";
 
 const time = new Date();
 const eventTime = new Date(2025, 11, 6);
-const schedules = inject<Schedule[]>("schedules")?.filter(schedule => schedule.actualTime.getDate() == time.getDate());
+const schedules = inject<Schedule[]>("schedules")
 schedules?.sort((a,b) => a.id - b.id);
+schedules?.filter((schedule) => schedule.actualTime.getDate() == time.getDate());
 
 const getCurrentScheduleIndex = (): number => {
   const scheduleList = schedules?.filter((schedule) => !schedule.finished && schedule.scheduled <= time)
