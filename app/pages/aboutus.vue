@@ -1,79 +1,6 @@
 <script setup lang="ts">
-import { defineComponent, h } from 'vue'
-import {kbriLogo, makLogo, ppiALogo, ppiJLogo, vcwsaLogo, wartegLogo} from "~/assets/images";
-
-// Types
-type Org = { name: string; role?: string; logo?: string; href?: string }
-type Sponsor = { name: string; logo?: string; href?: string }
-
-// ORGANIZERS (silakan edit sesuai kebutuhan)
-const organizers: Org[] = [
-  {
-    name: 'PPI Aachen',
-    role: 'Main Organizer',
-    logo:  ppiALogo,
-    href: 'https://ppiaachen.de'
-  },
-
-  {
-    name: '(MAK) Malaysisch-Aachener Klub e.V. ',
-    role: 'Main Organizer',
-    logo:  makLogo, // contoh kalau nanti punya logo
-    href: 'https://www.instagram.com/malaysia.aachen/?hl=en'
-  },
-
-  {
-    name: 'VCWSA e.V.',
-    role: 'Main Organizer',
-    logo:  vcwsaLogo, // contoh kalau nanti punya logo
-    href: 'https://www.instagram.com/vcwsa_rwth/?hl=en'
-  }
-
-]
-
-// ALL SPONSORS (SATU LIST AJA)
-const sponsors: Sponsor[] = [
-  {
-    name: 'KBRI (Kedutaan Besar Republik Indonesia)',
-    logo: kbriLogo,
-    href: 'https://kemlu.go.id/'
-  },
-  {
-    name: 'PPIJ (Perhimpunan Pelajar Indonesia di Jerman)',
-    logo: ppiJLogo,
-    href: 'https://ppijerman.org/'
-  },
-
-  {
-    name: 'Warteg',
-    logo: wartegLogo,
-    href: 'https://www.warteg-aachen.com/'
-  }
-  // Tambah sponsor lain di sini:
-  // { name: 'Sponsor Lain', logo: someLogo, href: 'https://example.com' }
-]
-
-// Small helper: shows img if src exists, otherwise a placeholder box with the name
-const Logo = defineComponent({
-  props: { src: String, alt: String },
-  setup(props) {
-    return () =>
-      props.src
-        ? h('img', {
-            src: props.src,
-            alt: props.alt,
-            class: 'w-full h-16 object-contain'
-          })
-        : h(
-            'div',
-            {
-              class:
-                'w-full h-16 flex items-center justify-center ring-1 ring-white/20 rounded-lg text-sm opacity-80'
-            },
-            props.alt || 'Logo'
-          )
-  }
-})
+import Organizers from "~/component/informations/organizers/organizers.vue";
+import Sponsors from "~/component/informations/sponsors/sponsors.vue";
 </script>
 
 <template>
@@ -118,67 +45,11 @@ const Logo = defineComponent({
     </UCard>
 
     <!-- ORGANIZERS -->
-    <UCard>
-      <template #header>
-        <div class="text-xl font-semibold">Organizers</div>
-      </template>
-
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <div
-          v-for="org in organizers"
-          :key="org.name"
-          class="rounded-xl p-4 ring-1 ring-white/10 bg-black/10 flex items-center gap-4 flex-col justify-center text-center"
-        >
-          <Logo :src="org.logo" :alt="org.name" />
-          <div class="min-w-0">
-            <div class="font-medium truncate">{{ org.name }}</div>
-            <div class="text-sm opacity-70">
-              {{ org.role || 'Organizer' }}
-            </div>
-            <div v-if="org.href" class="mt-1">
-              <ULink :to="org.href" target="_blank" class="text-[var(--blue1)] hover:underline">
-                Website
-              </ULink>
-            </div>
-          </div>
-        </div>
-
-        <div v-if="organizers.length === 0" class="col-span-full text-center opacity-70 py-6">
-          Add items to <code>organizers[]</code> in the <em>&lt;script setup&gt;</em> section.
-        </div>
-      </div>
-    </UCard>
+    <organizers />
 
     <!-- SPONSORS (SINGLE LIST) -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold">Sponsors</h2>
+    <sponsors />
 
-      <UCard>
-        <template #header>
-          <div class="text-lg font-semibold">Our Sponsors</div>
-        </template>
-
-        <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-          <ULink
-            v-for="sp in sponsors"
-            :key="sp.name"
-            :to="sp.href || '#'"
-            target="_blank"
-            class="rounded-xl p-4 ring-1 ring-white/10 bg-black/10 flex items-center gap-4 hover:bg-white/5 flex-col"
-          >
-            <Logo :src="sp.logo" :alt="sp.name" />
-            <div class="font-medium text-wrap text-center">
-              {{ sp.name }}
-            </div>
-          </ULink>
-
-          <div v-if="sponsors.length === 0" class="opacity-70 py-2 col-span-full">
-            Add sponsors to the <code>sponsors[]</code> array in the
-            <em>&lt;script setup&gt;</em> section.
-          </div>
-        </div>
-      </UCard>
-    </section>
   </div>
 </template>
 

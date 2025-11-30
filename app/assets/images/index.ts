@@ -3,16 +3,23 @@ export {default as badmintonLogo} from "./badminton_logo.svg";
 export {default as futsalLogo} from "./football_logo.svg";
 export {default as volleyballLogo} from "./volleyball_logo.svg";
 export {default as basketballLogo} from "./basketball_logo.svg";
+
+//Icon
 export {default as dateLogo} from "./date_logo.svg";
+export {default as instagramIcon} from "./instagram_icon.svg";
+export {default as locationIcon} from "./location_logo.svg";
 
 //org logo
 export {default as ppiALogo} from "./ppi_logo.svg";
 export {default as makLogo} from "./mak_logo.svg";
 export {default as vcwsaLogo} from "./vcwsa_logo.svg";
-export {default as instagramIcon} from "./instagram_icon.svg";
 export {default as kbriLogo} from "./kbrilogo.jpg";
 export {default as ppiJLogo} from "./ppijlogo.png";
 export {default as wartegLogo} from "./warteglogo.png";
+export {default as malaysianEmbassyLogo} from "./Malaysia-Embassy-Logo.jpg";
+export {default as malaysianConsulateGeneralLogo} from "./Malaysian-Consulate-General.jpg";
+export {default as JPALogo} from "./JPA-Logo.jpg";
+export {default as DAADLogo} from "./DAAD-logo.svg";
 
 //merch bundle pics
 export {default as bundle1} from "./merch/bundle/bundle1.jpg";

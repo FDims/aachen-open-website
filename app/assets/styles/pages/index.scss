@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    height: 100%;
     overflow: auto;
     .homepage-description{
         flex: auto;
@@ -120,6 +119,10 @@
             text-align: center;
         }
     }
+}
+
+.homepage-organizers, .homepage-sponsors{
+    margin: 1vh 7vw;
 }
 
 @media (max-width: 940px) {

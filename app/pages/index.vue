@@ -2,6 +2,9 @@
 import type {Schedule, Team} from "~~/types";
 import MatchCard from "~/component/matchCard/matchCard.vue";
 import "~/assets/styles/pages/index.scss";
+import Organizers from "~/component/informations/organizers/organizers.vue";
+import Sponsors from "~/component/informations/sponsors/sponsors.vue";
+import {dateLogo, instagramIcon, locationIcon} from "~/assets/images";
 
 const time = new Date();
 const eventTime = new Date(2025, 11, 6);
@@ -32,15 +35,15 @@ const getCurrentScheduleIndex = (): number => {
       </div>
       <div class="homepage-description-infos">
         <div class="homepage-infos-date">
-          <img src="~/assets/images/date_logo.svg" alt="date-logo"  class="homepage-infos-date-icon" />
+          <img :src="dateLogo" alt="date-logo"  class="homepage-infos-date-icon" />
           <p class="homepage-infos-date-text">06 - 07 December 2025</p>
         </div>
         <div class="homepage-infos-location">
-          <img src="~/assets/images/location_logo.svg" alt="location-logo"  class="homepage-infos-location-icon" />
+          <img :src="locationIcon" alt="location-logo"  class="homepage-infos-location-icon" />
           <ULink class="homepage-infos-location-text" to="https://maps.app.goo.gl/rAQUVeuXEyeDUN1J7" target="_blank">Berufskolleg Nord of StädteRegion Aachen - Location Herzogenrath</ULink>
         </div>
         <div class="homepage-infos-instagram">
-          <img src="~/assets/images/instagram_icon.svg" alt="instagram-logo" class="homepage-infos-instagram-icon"/>
+          <img :src="instagramIcon" alt="instagram-logo" class="homepage-infos-instagram-icon"/>
           <ULink class="homepage-infos-instagram-text" to="https://www.instagram.com/aachen.open/" target="_blank">@aachen.open</ULink>
         </div>
       </div>
@@ -80,6 +83,8 @@ const getCurrentScheduleIndex = (): number => {
       </p>
     </div>
   </div>
+  <organizers class="homepage-organizers" />
+  <sponsors class="homepage-sponsors" />
 </template>
 
 <style scoped></style>

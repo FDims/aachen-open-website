@@ -10,6 +10,11 @@ const items = computed<NavigationMenuItem[]>(() => [
     active: route.path.endsWith("/"),
   },
   {
+    label: "Merchandise",
+    to: `/merch`,
+    active: route.path.endsWith("/merch"),
+  },
+  {
     label: "Schedule",
     to: `/schedules`,
     active: route.path.startsWith("/schedules"),
@@ -20,6 +25,11 @@ const items = computed<NavigationMenuItem[]>(() => [
     to: `/standings`,
     active: route.path.startsWith("/standings"),
     disabled: true,
+  },
+  {
+    label: "About Us",
+    to: `/aboutus`,
+    active: route.path.startsWith("/aboutus"),
   },
 ]);
 </script>
