@@ -5,8 +5,13 @@
 
     .standing-playoff__title {
       text-align: center;
-      font-size: 4vh;
+      font-size: 3vh;
       font-weight: bold;
+      @media (min-width: 940px) {
+        position: absolute;
+        top: 5px;
+        left: 2vw;
+      }
     }
 
     .standing-playoff__bracket-container {
@@ -31,13 +36,13 @@
             font-style: italic;
 
           }
-          .standing-playoff__quarter-final__card, .standing-playoff__final__card {
+          .standing-playoff__quarter-final__card, .standing-playoff__final__card, .standing-playoff__semi-final__card {
             margin: 7px 5px;
             width: 100%;
           }
 
           .standing-playoff__semi-final__card {
-            margin: 30px 5px;
+            margin: 7px 5px 60px 5px;
             width: 100%;
           }
         }
@@ -50,7 +55,7 @@
           }
 
           .standing-playoff__winner__card {
-            margin: 30px 5px;
+            margin: 7px 5px;
             min-width: 250px;
             .standing-playoff__winner__card__wrapper {
               .standing-playoff__winner__team {

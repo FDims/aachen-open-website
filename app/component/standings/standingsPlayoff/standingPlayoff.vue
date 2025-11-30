@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import "./standingPlayoff.scss"
 import StandingPlayoffCard from "~/component/standings/standingsPlayoff/standingsPlayoffCard/standingPlayoffCard.vue";
-import type {Bracket, Schedule} from "~~/types";
+import type {Bracket, Schedule, Sport} from "~~/types";
+import {getSportName} from "../../../../utils/getSportName";
 
 const props = defineProps<{
   bracket: Bracket;
   matchSchedules: Schedule[];
+  sport: Sport;
 }>()
 
 
@@ -23,8 +25,8 @@ const bracketData: BracketData ={
 
 // --- Helper function to get winner name ---
 const getWinner = (match: Schedule): string => {
-  if (match.winnerTeam && match.teamA && match.winnerTeam === match.teamA.name) return match.teamA.name;
-  if (match.winnerTeam && match.teamB && match.winnerTeam === match.teamB.name) return match.teamB.name;
+  if (match.finished && match.teamA && match.winnerTeam === match.teamA.id) return match.teamA.name;
+  if (match.finished && match.teamB && match.winnerTeam === match.teamB.id) return match.teamB.name;
   return 'TBD';
 };
 </script>
@@ -33,7 +35,7 @@ const getWinner = (match: Schedule): string => {
   <div class="standing-playoff__wrapper">
     <div class="standing-playoff__container">
       <h1 class="standing-playoff__title">
-        Playoff Bracket
+        {{getSportName(props.sport)}} Playoff Bracket
       </h1>
 
       <div class="standing-playoff__bracket-container">

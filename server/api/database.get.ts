@@ -27,7 +27,7 @@ export default cachedEventHandler(async (event) => {
     //    (You can add/remove any sheets you need here)
     const sheetsToFetch = [
         "VolleyballTeams!A:H",
-        "Schedule!A:J",
+        "Schedule!A:N",
         "FutsalTeams!A:L",
         "BadmintonMixedDouble!A:H",
         "BadmintonMenDouble!A:H",

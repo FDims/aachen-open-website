@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import type {Schedule} from "~~/types";
 import "./matchCard.scss";
-import futsalLogo from '~/assets/images/football_logo.svg';
-import badmintonLogo from '~/assets/images/badminton_logo.svg';
-import volleyballLogo from '~/assets/images/volleyball_logo.svg';
-import basketballLogo from '~/assets/images/basketball_logo.svg';
-import { getSportName } from "../../../utils/getSportName";
+
+import { getSportName } from "~~/utils/getSportName";
+import {badmintonLogo, basketballLogo, futsalLogo, volleyballLogo} from "~/assets/images";
 
 const props = defineProps<{
   schedule: Schedule,
@@ -37,7 +35,7 @@ const status = () => {
       class="match-card-wrapper rounded-lg bg-elevated/50 ring ring-default"
   >
       <div class="match-card-header">
-        <img :src="logo()" alt="sports-logo" class="match-card-header-logo">
+        <img :src="logo()" alt="sports-logo" class="match-card-header-logo"/>
         <p class="match-card-header-text">{{getSportName(props.schedule.sport)}}</p>
       </div>
       <div class="match-card-body">

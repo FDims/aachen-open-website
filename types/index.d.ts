@@ -18,7 +18,7 @@ export interface Team {
 }
 
 export interface Schedule {
-    id: string;
+    id: number;
     sport: Sport
     type: Bracket;
     scheduled: Date;

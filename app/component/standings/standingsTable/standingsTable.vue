@@ -5,14 +5,21 @@ import type {Group, Team} from "~~/types";
 
   const props = defineProps<{
     group: Group;
-  }>()
+  }>();
+
+  const sortedTeam = props.group.teams.sort((a,b) => {
+    if (props.group.sport === 'futsal' && a.points === b.points ) {
+      return b.goalDiff - a.goalDiff;
+    }
+    return b.points - a.points;
+  });
 
   const column = () : TableColumn<Team>[] => {
     if(props.group.sport === "futsal") {
       return([
         {
           accessorKey: 'index',
-          header: ' ',
+          header: "Rank",
           cell: ({ row }) => {
             return row.index + 1;
           }
@@ -50,7 +57,7 @@ import type {Group, Team} from "~~/types";
       return([
         {
           accessorKey: 'index',
-          header: ' ',
+          header: "Rank",
           cell: ({ row }) => {
             return row.index + 1;
           }
@@ -81,7 +88,7 @@ import type {Group, Team} from "~~/types";
   <div class="standings-table">
     <h1 class="standings-table-title">Group {{props.group.name}}</h1>
     <UTable
-        :data="props.group.teams"
+        :data="sortedTeam"
         :columns="column()"
         loading-animation="carousel"
         class="flex-1 text-xl standings-table-data"
