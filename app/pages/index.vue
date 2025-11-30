@@ -66,7 +66,6 @@ const getCurrentScheduleIndex = (): number => {
               controls: 'absolute -top-4 inset-x-30',
               arrows: 'hidden sm:flex'
               }"
-            :start-index="getCurrentScheduleIndex()"
           >
           <match-card :schedule="item" class="homepage-schedule-card"/>
         </UCarousel>
