@@ -35,7 +35,7 @@ const getWinner = (match: Schedule): string => {
   <div class="standing-playoff__wrapper">
     <div class="standing-playoff__container">
       <h1 class="standing-playoff__title">
-        {{getSportName(props.sport)}} Playoff Bracket
+        {{getSportName(props.sport)}}Playoff Bracket
       </h1>
 
       <div class="standing-playoff__bracket-container">

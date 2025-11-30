@@ -2,6 +2,7 @@
 import StandingGroup from "../standingsGroup/standingGroup.vue";
 import type {Group, Schedule, Sport, Team} from "~~/types"
 import "./standingMain.scss"
+import {badmintonLogo, basketballLogo, futsalLogo, volleyballLogo} from "~/assets/images";
 
 const badmintonMenDoubleTeams = inject<Team[]>("badmintonMenDouble");
 const badmintonMixedDoubleTeams = inject<Team[]>("badmintonMixedDouble");
@@ -15,22 +16,27 @@ const items = [
   {
     label: "Men's Doubles",
     slot: 'badmintonMenDobule',
+    img: badmintonLogo,
   },
   {
     label: "Mixed Doubles",
     slot: 'badmintonMixedDouble',
+    img: badmintonLogo,
   },
   {
     label: "Basketball",
     slot: 'basketball',
+    img: basketballLogo,
   },
   {
     label: "Volleyball",
     slot: 'volleyball',
+    img: volleyballLogo,
   },
   {
     label: "Futsal",
     slot: 'futsal',
+    img: futsalLogo,
   },
 ];
 
@@ -63,13 +69,21 @@ const getPlayoffTeams = (sportType: Sport): Schedule[] => {
   >
     <UTabs
         :items="items"
-        color="neutral"
+        color="error"
         size="xl"
         class="standing-main-tabs"
+        orientation="horizontal"
         :ui="{
-          label: 'text-sm font-medium whitespace-normal text-center text-clip',
+          label: 'table-label',
+          list: 'table-tabs',
         }"
     >
+      <template #default="{ item }">
+        <div class="table-tabs-item">
+          <img :src="item.img" alt="sport's logo" class="table-tabs-icon" />
+          <p class="table-tabs-title">{{item.label}}</p>
+        </div>
+      </template>
       <template #badmintonMenDobule>
         <standing-group :groups="getSportGroup(badmintonMenDoubleTeams)" :playoff="getPlayoffTeams('badmintonMenDouble')" bracket="quarter"/>
       </template>

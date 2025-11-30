@@ -5,8 +5,13 @@
 
     .standing-playoff__title {
       text-align: center;
-      font-size: 4vh;
+      font-size: 3vh;
       font-weight: bold;
+      @media (min-width: 940px) {
+        position: absolute;
+        top: 5px;
+        left: 2vw;
+      }
     }
 
     .standing-playoff__bracket-container {

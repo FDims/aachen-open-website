@@ -1,12 +1,35 @@
 .standing-group-wrapper{
   .standing-group-tab{
     margin: auto;
+    position: relative;
+    .group-table-tabs {
+      margin: auto 1vw;
+      width: 300px;
+      align-self: end;
+      @media (max-width: 940px) {
+        align-self: center;
+      }
+
+      .table-selected-color{
+        background-color: red;
+      }
+    }
 
     .standing-group-tables{
-      margin: auto 2vw;
+      margin: auto 0;
       .standing-group-table{
-        margin: 2vh 2vw;
+        margin: 3vh 1vw;
       }
+    }
+  }
+  .standing-group-tables-title{
+    text-align: center;
+    font-size: 3vh;
+    font-weight: bold;
+    @media (min-width: 940px) {
+      position: absolute;
+      top: 5px;
+      left: 2vw;
     }
   }
 }
