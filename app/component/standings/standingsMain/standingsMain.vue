@@ -88,7 +88,7 @@ const getPlayoffTeams = (sportType: Sport): Schedule[] => {
         <standing-group :groups="getSportGroup(badmintonMenDoubleTeams)" :playoff="getPlayoffTeams('badmintonMenDouble')" bracket="quarter"/>
       </template>
       <template #badmintonMixedDouble>
-        <standing-group :groups="getSportGroup(badmintonMixedDoubleTeams)" :playoff="getPlayoffTeams('badmintonMixedDouble')" bracket="quarter"/>
+        <standing-group :groups="getSportGroup(badmintonMixedDoubleTeams)" :playoff="getPlayoffTeams('badmintonMixedDouble')" bracket="semi"/>
       </template>
       <template #basketball>
         <standing-group :groups="getSportGroup(basketballTeams)" :playoff="getPlayoffTeams('basketball')" bracket="semi"/>
@@ -97,7 +97,7 @@ const getPlayoffTeams = (sportType: Sport): Schedule[] => {
         <standing-group :groups="getSportGroup(volleyballTeams)" :playoff="getPlayoffTeams('volleyball')" bracket="semi"/>
       </template>
       <template #futsal>
-        <standing-group :groups="getSportGroup(futsalTeams)" :playoff="getPlayoffTeams('futsal')" bracket="semi"/>
+        <standing-group :groups="getSportGroup(futsalTeams)" :playoff="getPlayoffTeams('futsal')" bracket="quarter"/>
       </template>
     </UTabs>
   </div>
