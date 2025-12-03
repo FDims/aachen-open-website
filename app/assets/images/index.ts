@@ -20,6 +20,7 @@ export {default as malaysianEmbassyLogo} from "./Malaysia-Embassy-Logo.jpg";
 export {default as malaysianConsulateGeneralLogo} from "./Malaysian-Consulate-General.jpg";
 export {default as JPALogo} from "./JPA-Logo.jpg";
 export {default as DAADLogo} from "./DAAD-logo.svg";
+export {default as AKILogo} from "./AK-I_Logo.svg";
 
 //merch bundle pics
 export {default as bundle1} from "./merch/bundle/bundle1.jpg";
