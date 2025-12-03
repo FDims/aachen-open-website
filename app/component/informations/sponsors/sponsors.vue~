@@ -64,7 +64,7 @@ const collaborators: Sponsor[] = [
   {
     name: 'Arbeitskreis Indonesia',
     logo: AKILogo,
-    href: 'https://kemlu.go.id/'
+    href: 'https://www.instagram.com/arbeitskreis.id/?hl=en'
   },
   // Tambah sponsor lain di sini:
   // { name: 'Sponsor Lain', logo: someLogo, href: 'https://example.com' }
@@ -103,12 +103,12 @@ const collaborators: Sponsor[] = [
 
     <UCard>
       <template #header>
-        <div class="text-lg font-semibold">Our Sponsors</div>
+        <div class="text-lg font-semibold">Our Collaborators</div>
       </template>
 
       <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         <ULink
-            v-for="sp in sponsors"
+            v-for="sp in collaborators"
             :key="sp.name"
             :to="sp.href || '#'"
             target="_blank"

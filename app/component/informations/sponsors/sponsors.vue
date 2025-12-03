@@ -8,7 +8,7 @@ import {
   malaysianConsulateGeneralLogo,
   malaysianEmbassyLogo,
   ppiJLogo,
-  wartegLogo
+  wartegLogo, yiJoyLogo
 } from "~/assets/images";
 
 type Sponsor = { name: string; logo?: string; href?: string }
@@ -52,7 +52,7 @@ const sponsors: Sponsor[] = [
   },
   {
     name: 'Yi Joy Badminton Studio',
-    logo: "",
+    logo: yiJoyLogo,
     href: 'https://u.wechat.com/MDacT8jW_uvx5ezpFu8aZBU?s=2'
   }
   // Tambah sponsor lain di sini:
