@@ -18,7 +18,6 @@ const items = computed<NavigationMenuItem[]>(() => [
     label: "Schedule",
     to: `/schedules`,
     active: route.path.startsWith("/schedules"),
-    disabled: true,
   },
   {
     label: "Standing",
