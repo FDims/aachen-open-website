@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {Schedule, Sport} from '~~/types'
+import type {Bracket, Schedule, Sport} from '~~/types'
 import "../assets/styles/pages/schedules.scss"
 import {badmintonLogo, basketballLogo, futsalLogo, volleyballLogo} from "~/assets/images";
 
@@ -50,6 +50,17 @@ function toggleSport(key: SportKey) {
   selectedSports.value = next
 }
 function clearSports() { selectedSports.value = new Set() }
+
+function getStageType(type: Bracket): string {
+  switch (type) {
+    case "quarter": return "Quarter Final";
+    case "semi": return "Semi Final";
+    case "final": return "Final";
+    case "group": return "Group Stage";
+    default:
+      return "TBD";
+  }
+}
 
 const selectedDay = ref<DayKey>('all')
 
@@ -122,6 +133,13 @@ const column : TableColumn<Schedule>[] = [
     header: 'Sport',
   },
   {
+    accessorKey: 'type',
+    header: 'Stage',
+    cell: ({ row }) => {
+      return row.getValue("type")? getStageType(row.getValue("type")) : "TBD";
+    }
+  },
+  {
     accessorKey: 'actualTime',
     header: 'Actual Time',
     cell: ({ row }) => {
@@ -132,6 +150,10 @@ const column : TableColumn<Schedule>[] = [
         minute: '2-digit'
       });
     }
+  },
+  {
+    accessorKey: 'court',
+    header: 'Court',
   },
 ]
 
@@ -145,7 +167,12 @@ const badgeSoftBlue  = '!bg-[color-mix(in_oklab,var(--blue1)_15%,transparent)] !
 <template>
   <!-- make all text white by default -->
   <div class="p-6 text-white">
-    <h1 class="text-2xl font-bold mb-4 text-center">Schedule</h1>
+    <h1 class="text-2xl font-bold text-center">Schedule</h1>
+    <ULink
+        to="https://docs.google.com/spreadsheets/d/1ljpUNENKmINkbl3wFy03inDQxYlw76oIe43KYfw664Y/edit?usp=sharing"
+        class="sheet-link"
+        target="_blank"
+    >click here for google sheet version of schedule</ULink>
 
     <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4">
       <!-- LEFT: multi-select sport filter -->

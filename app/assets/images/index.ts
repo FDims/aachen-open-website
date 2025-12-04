@@ -44,3 +44,8 @@ export {default as tshirt4} from "./merch/t-shirt/t4.jpg";
 export {default as tshirt5} from "./merch/t-shirt/t5.jpg";
 export {default as tshirt6} from "./merch/t-shirt/t6.jpg";
 export {default as tshirt7} from "./merch/t-shirt/t7.jpg";
+
+//images
+export {default as courtImage} from "./court_image.png";
+export {default as rules1} from "./rules_list.png";
+export {default as rules2} from "./rules_2.png";

@@ -29,6 +29,7 @@ export interface Schedule {
     scoreB: number;
     finished: boolean;
     winnerTeam?: string;
+    court: string;
 }
 
 export interface Group {

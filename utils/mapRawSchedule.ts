@@ -16,6 +16,7 @@ export function mapRawSchedule (rawSchedule: any[], teams: Team[]): Schedule[] {
                 scoreB: rawSchedule.teamB_Score,
                 finished: rawSchedule.finished == "TRUE",
                 winnerTeam: rawSchedule.winner_team,
+                court: rawSchedule.court||"TBD",
             }
             result.push(schedule);
         }
