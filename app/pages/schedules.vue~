@@ -95,10 +95,10 @@ const countsBySport = computed(() => {
 
 const column : TableColumn<Schedule>[] = [
   {
-    accessorKey: 'actualTime',
-    header: 'Time',
+    accessorKey: 'scheduled',
+    header: ' Scheduled',
     cell: ({ row }) => {
-      return new Date(row.getValue('actualTime')).toLocaleTimeString('en-GB', {
+      return new Date(row.getValue('scheduled')).toLocaleTimeString('en-GB', {
         day : '2-digit',
         month: '2-digit',
         hour: '2-digit',
@@ -137,6 +137,18 @@ const column : TableColumn<Schedule>[] = [
     header: 'Stage',
     cell: ({ row }) => {
       return row.getValue("type")? getStageType(row.getValue("type")) : "TBD";
+    }
+  },
+  {
+    accessorKey: 'actualTime',
+    header: 'Actual Time',
+    cell: ({ row }) => {
+      return new Date(row.getValue('actualTime')).toLocaleTimeString('en-GB', {
+        day : '2-digit',
+        month: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
     }
   },
   {
