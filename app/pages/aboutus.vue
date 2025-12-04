@@ -6,12 +6,12 @@ import Sponsors from "~/component/informations/sponsors/sponsors.vue";
 <template>
   <div class="p-6 text-white space-y-6 max-w-5xl mx-auto">
     <!-- HEADER -->
-    <header class="space-y-1">
+    <div class="space-y-1">
       <h1 class="text-3xl md:text-4xl font-bold">About Us</h1>
       <p class="opacity-80">
         A short introduction to Aachen Open, the organizers, and our sponsors.
       </p>
-    </header>
+    </div>
 
     <!-- EVENT DESCRIPTION -->
     <UCard>
