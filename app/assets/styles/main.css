@@ -20,7 +20,6 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    overflow: clip;
     max-width: 100%;
 }
 header {
@@ -41,18 +40,4 @@ footer {
     max-width: 100vw;
 }
 
-
-@media (max-width: 500px) {
-    header {
-        height: 10vh;
-    }
-
-    main{
-        height: 65vh;
-    }
-
-    footer {
-        height: 25vh;
-    }
-}
 
