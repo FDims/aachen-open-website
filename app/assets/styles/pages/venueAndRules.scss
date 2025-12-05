@@ -1,6 +1,9 @@
 .wrapper {
   margin: 10px auto;
   width: 60vw;
+  @media (max-width: 940px) {
+    width: 90vw;
+  }
 }
 
 .title{
@@ -12,6 +15,9 @@
 .images {
   height: 50vw;
   margin: 10px auto;
+  @media (max-width: 940px) {
+    height: 90vw;
+  }
 }
 
 .location-link{
