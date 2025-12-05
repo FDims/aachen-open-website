@@ -21,6 +21,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     max-width: 100%;
+    color: white;
 }
 header {
     width: 100vw;
@@ -31,7 +32,7 @@ header {
 
 main{
     padding-top: 100px;
-    min-heightheight: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
     margin: 0;
     overflow: auto;
     width: 100vw;
