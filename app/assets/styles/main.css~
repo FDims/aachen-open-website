@@ -31,7 +31,7 @@ header {
 
 main{
     padding-top: 100px;
-    min-height: calc(100vh - 100px);
+    min-heightheight: calc(100vh - 100px);
     margin: 0;
     overflow: auto;
     width: 100vw;
