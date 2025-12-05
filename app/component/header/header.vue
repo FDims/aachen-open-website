@@ -25,9 +25,9 @@ const items = computed<NavigationMenuItem[]>(() => [
     active: route.path.startsWith("/standings"),
   },
   {
-    label: "Venue And Rules",
-    to: `/venueAndRules`,
-    active: route.path.startsWith("/venueAndRules"),
+    label: "Venue And Vendors",
+    to: `/venueAndVendors`,
+    active: route.path.startsWith("/venueAndVendors"),
   },
   {
     label: "About Us",

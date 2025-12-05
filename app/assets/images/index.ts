@@ -49,3 +49,11 @@ export {default as tshirt7} from "./merch/t-shirt/t7.jpg";
 export {default as courtImage} from "./court_image.png";
 export {default as rules1} from "./rules_list.png";
 export {default as rules2} from "./rules_2.png";
+
+//vendors
+export {default as vendor1} from "./vendors/fnb1.png";
+export {default as vendor2} from "./vendors/fnb2.png";
+export {default as vendor3} from "./vendors/fnb3.png";
+export {default as vendor4} from "./vendors/fnb4.png";
+export {default as vendor5} from "./vendors/fnb5.png";
+export {default as vendor6} from "./vendors/fnb6.png";
