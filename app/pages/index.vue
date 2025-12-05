@@ -51,7 +51,7 @@ const getCurrentScheduleIndex = (): number => {
     <div class="homepage-schedule-cards-wrapper">
       <div class="homepage-schedule-cards-title">
         <h1 class="homepage-schedule-cards-title-text">Matches of the day:</h1>
-        <ULink class="homepage-schedule-cards-redirect" to="/schedules" :disabled="true" >click for schedule</ULink>
+        <ULink class="homepage-schedule-cards-redirect" to="/schedules" >click for schedule</ULink>
       </div>
       <div class="homepage-schedule-cards">
         <UCarousel
