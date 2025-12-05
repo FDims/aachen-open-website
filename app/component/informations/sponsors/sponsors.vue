@@ -18,7 +18,7 @@ const sponsors: Sponsor[] = [
   {
     name: 'KBRI (Kedutaan Besar Republik Indonesia) Berlin',
     logo: kbriLogo,
-    href: 'https://kemlu.go.id/'
+    href: 'https://indonesianembassy.de/'
   },
   {
     name: 'PPIJ (Perhimpunan Pelajar Indonesia di Jerman)',
