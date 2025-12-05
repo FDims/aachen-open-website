@@ -18,6 +18,8 @@ const breakpoints = useBreakpoints(breakpointsTailwind)
 
 const eventDate = new Date(2025, 11, 6);
 const today = new Date();
+console.log(today)
+console.log(eventDate)
 
 const disable = () : boolean => {
   if(today.getFullYear() < eventDate.getFullYear())
