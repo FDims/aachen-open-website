@@ -14,7 +14,7 @@ import "../assets/styles/pages/venueAndRules.scss"
       </template>
       <div class="location-link">
         <img :src="locationIcon" alt="location-logo"  class="location-icon" />
-        <ULink class="homepage-infos-location-text" to="https://maps.app.goo.gl/rAQUVeuXEyeDUN1J7" target="_blank">Berufskolleg Nord of StädteRegion Aachen - Location Herzogenrath</ULink>
+        <ULink class="homepage-infos-location-text" to="https://maps.app.goo.gl/Z3VAY9UWXvcDPEMt7" target="_blank">Berufskolleg Nord of StädteRegion Aachen - Location Herzogenrath</ULink>
       </div>
       <img :src="courtImage" alt="Court" class="images"/>
 

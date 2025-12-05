@@ -40,7 +40,7 @@ const getCurrentScheduleIndex = (): number => {
         </div>
         <div class="homepage-infos-location">
           <img :src="locationIcon" alt="location-logo"  class="homepage-infos-location-icon" />
-          <ULink class="homepage-infos-location-text" to="https://maps.app.goo.gl/rAQUVeuXEyeDUN1J7" target="_blank">Berufskolleg Nord of StädteRegion Aachen - Location Herzogenrath</ULink>
+          <ULink class="homepage-infos-location-text" to="https://maps.app.goo.gl/Z3VAY9UWXvcDPEMt7" target="_blank">Berufskolleg Nord of StädteRegion Aachen - Location Herzogenrath</ULink>
         </div>
         <div class="homepage-infos-instagram">
           <img :src="instagramIcon" alt="instagram-logo" class="homepage-infos-instagram-icon"/>
