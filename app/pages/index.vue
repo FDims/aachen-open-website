@@ -16,10 +16,13 @@ schedules = schedules?.filter((schedule) => (
         schedule.scheduled.getFullYear() == time.getFullYear()
 ));
 
-const getCurrentScheduleIndex = (): number => {
-  const scheduleList = schedules?.filter((schedule) => !schedule.finished && schedule.scheduled <= time)
-  if (scheduleList)
-    return scheduleList[0].id;
+function getCurrentScheduleIndex (): number {
+  const currentSchedule: Schedule = schedules?.find((schedule) => !schedule.finished &&
+      schedule.scheduled.getDate() <= time.getDate() &&
+      schedule.scheduled.getMonth() <= time.getMonth() &&
+      schedule.scheduled.getFullYear() <= time.getFullYear())
+  if (currentSchedule)
+    return Number(currentSchedule.id);
   return 0;
 }
 </script>
@@ -60,6 +63,7 @@ const getCurrentScheduleIndex = (): number => {
       <div class="homepage-schedule-cards">
         <UCarousel
             v-if="time >= eventTime"
+            :start-index="getCurrentScheduleIndex()-1"
             v-slot ="{item}"
             class="homepage-schedule-carousel"
             arrows

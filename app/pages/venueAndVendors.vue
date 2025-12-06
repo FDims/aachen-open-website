@@ -52,6 +52,7 @@ const vendors = [vendor1, vendor2, vendor3, vendor4, vendor5, vendor6];
           :items="vendors"
           class="vendor-carousel"
           loop
+          auto-scroll
       >
         <img
             :src="item"

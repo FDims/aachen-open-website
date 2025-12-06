@@ -99,6 +99,7 @@
         }
 
         .homepage-schedule-cards {
+            background-color: white;
             width: 85%  ;
             border: 2px solid var(--cream);
             border-radius: 10px;
