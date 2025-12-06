@@ -8,7 +8,7 @@ import type {Group, Team} from "~~/types";
   }>();
 
   const sortedTeam = props.group.teams.sort((a,b) => {
-    if (props.group.sport === 'futsal' && a.points === b.points ) {
+    if ((props.group.sport === 'futsal' || props.group.sport === 'basketball') && a.points === b.points ) {
       return b.goalDiff - a.goalDiff;
     }
     return b.points - a.points;
@@ -19,7 +19,7 @@ import type {Group, Team} from "~~/types";
       return([
         {
           accessorKey: 'index',
-          header: ' ',
+          header: "Rank",
           cell: ({ row }) => {
             return row.index + 1;
           }
@@ -31,6 +31,10 @@ import type {Group, Team} from "~~/types";
         {
           accessorKey: 'winCount',
           header: 'W',
+        },
+        {
+          accessorKey: 'drawCount',
+          header: 'D'
         },
         {
           accessorKey: 'loseCount',

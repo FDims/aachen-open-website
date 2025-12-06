@@ -26,12 +26,12 @@ export default cachedEventHandler(async (event) => {
     // 2. Define the *multiple* sheets and ranges you want to get
     //    (You can add/remove any sheets you need here)
     const sheetsToFetch = [
-        "VolleyballTeams!A:H",
+        "VolleyballTeams!A:I",
         "Schedule!A:O",
         "FutsalTeams!A:L",
-        "BadmintonMixedDouble!A:H",
-        "BadmintonMenDouble!A:H",
-        "BasketballTeams!A:H"
+        "BadmintonMixedDouble!A:I",
+        "BadmintonMenDouble!A:I",
+        "BasketballTeams!A:I"
     ];
 
     // Build the URL for batchGet

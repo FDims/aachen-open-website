@@ -15,7 +15,7 @@ export function mapRawTeam(rawTeams: any[]): Team[] {
             drawCount: rawTeam.draw,
             goalAgainst: rawTeam.goalAgainst,
             goalFor: rawTeam.goalFor,
-            goalDiff: rawTeam.goalDiff,
+            goalDiff: rawTeam.goalDiff || rawTeam.totalScores || null,
         }
         resultTeams.push(team);
     })
