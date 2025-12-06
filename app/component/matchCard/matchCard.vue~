@@ -37,7 +37,7 @@ const status = () => {
   >
       <div class="match-card-header">
         <img :src="logo()" alt="sports-logo" class="match-card-header-logo"/>
-        <p class="match-card-header-text">{{getSportName(props.schedule.sport)}} {{getStageType(props.schedule.type)}}</p>
+        <p class="match-card-header-text">{{getSportName(props.schedule.sport)}} + {{getStageType(props.schedule.type)}}</p>
       </div>
       <div class="match-card-body">
         <h1 class="match-card-name-home">{{props.schedule.teamA ? props.schedule.teamA.name : "TBD"}}</h1>

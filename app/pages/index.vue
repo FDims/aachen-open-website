@@ -8,9 +8,13 @@ import {dateLogo, instagramIcon, locationIcon} from "~/assets/images";
 
 const time = new Date();
 const eventTime = new Date(2025, 11, 6);
-const schedules = inject<Schedule[]>("schedules")
-schedules?.sort((a,b) => a.id - b.id);
-schedules?.filter((schedule) => schedule.actualTime.getDate() == time.getDate());
+let schedules = inject<Schedule[]>("schedules")
+schedules = schedules?.sort((a,b) => a.id - b.id);
+schedules = schedules?.filter((schedule) => (
+        schedule.scheduled.getDate() == time.getDate() &&
+        schedule.scheduled.getMonth() == time.getMonth() &&
+        schedule.scheduled.getFullYear() == time.getFullYear()
+));
 
 const getCurrentScheduleIndex = (): number => {
   const scheduleList = schedules?.filter((schedule) => !schedule.finished && schedule.scheduled <= time)

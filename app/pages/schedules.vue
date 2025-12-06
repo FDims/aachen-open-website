@@ -2,6 +2,7 @@
 import type {Bracket, Schedule, Sport} from '~~/types'
 import "../assets/styles/pages/schedules.scss"
 import {badmintonLogo, basketballLogo, futsalLogo, volleyballLogo} from "~/assets/images";
+import {getStageType} from "~~/utils/getStageType";
 
 const SPORTS = [
   { key: 'volleyball', label: 'Volleyball', icon: volleyballLogo },
@@ -50,17 +51,6 @@ function toggleSport(key: SportKey) {
   selectedSports.value = next
 }
 function clearSports() { selectedSports.value = new Set() }
-
-function getStageType(type: Bracket): string {
-  switch (type) {
-    case "quarter": return "Quarter Final";
-    case "semi": return "Semi Final";
-    case "final": return "Final";
-    case "group": return "Group Stage";
-    default:
-      return "TBD";
-  }
-}
 
 const selectedDay = ref<DayKey>('all')
 
