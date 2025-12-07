@@ -8,6 +8,7 @@ import {dateLogo, instagramIcon, locationIcon} from "~/assets/images";
 
 const time = new Date();
 const eventTime = new Date(2025, 11, 6);
+const event2Day = new Date(2025,11,7);
 let schedules = inject<Schedule[]>("schedules")
 schedules = schedules?.sort((a,b) => a.id - b.id);
 schedules = schedules?.filter((schedule) => (
@@ -16,13 +17,26 @@ schedules = schedules?.filter((schedule) => (
         schedule.scheduled.getFullYear() == time.getFullYear()
 ));
 
+const day1MatchCount : number = schedules?.filter((schedule) => (
+  schedule.scheduled.getDate() == event2Day.getDate() &&
+  schedule.scheduled.getMonth() == event2Day.getMonth() &&
+  schedule.scheduled.getFullYear() == event2Day.getFullYear()
+)).length || 0;
+
 function getCurrentScheduleIndex (): number {
-  const currentSchedule: Schedule = schedules?.find((schedule) => !schedule.finished &&
+  const currentSchedule: Schedule | undefined = schedules?.find((schedule) => !schedule.finished &&
       schedule.scheduled.getDate() <= time.getDate() &&
       schedule.scheduled.getMonth() <= time.getMonth() &&
-      schedule.scheduled.getFullYear() <= time.getFullYear())
-  if (currentSchedule)
+      schedule.scheduled.getFullYear() <= time.getFullYear());
+  if (currentSchedule) {
+    if (event2Day.getDate() <= time.getDate() &&
+      event2Day.getMonth() <= time.getMonth() &&
+      event2Day.getFullYear() <= time.getFullYear())
+      return Number(currentSchedule.id) - day1MatchCount;
+    
     return Number(currentSchedule.id);
+
+  }
   return 0;
 }
 </script>
