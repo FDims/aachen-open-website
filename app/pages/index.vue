@@ -18,9 +18,9 @@ schedules = schedules?.filter((schedule) => (
 ));
 
 const day1MatchCount : number = schedules?.filter((schedule) => (
-  schedule.scheduled.getDate() == event2Day.getDate() &&
-  schedule.scheduled.getMonth() == event2Day.getMonth() &&
-  schedule.scheduled.getFullYear() == event2Day.getFullYear()
+  schedule.scheduled.getDate() == eventTime.getDate() &&
+  schedule.scheduled.getMonth() == eventTime.getMonth() &&
+  schedule.scheduled.getFullYear() == eventTime.getFullYear()
 )).length || 0;
 
 function getCurrentScheduleIndex (): number {
@@ -32,7 +32,7 @@ function getCurrentScheduleIndex (): number {
     if (event2Day.getDate() <= time.getDate() &&
       event2Day.getMonth() <= time.getMonth() &&
       event2Day.getFullYear() <= time.getFullYear())
-      return Number(currentSchedule.id) - day1MatchCount;
+      return Number(currentSchedule.id) - 56;
     
     return Number(currentSchedule.id);
 
