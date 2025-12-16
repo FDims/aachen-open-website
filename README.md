@@ -1,3 +1,8 @@
+#A WebApp created for live score update for the event Aachen Open
+
+#Served with Vercel
+https://aachen-open-website-dusky.vercel.app/
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
